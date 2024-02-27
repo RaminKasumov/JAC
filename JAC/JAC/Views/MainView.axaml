@@ -3,14 +3,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:JAC.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="800"
              x:Class="JAC.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <UserControl.Styles>
+       <Style Selector="Button.b1">
+          <Setter Property="FontSize" Value="200"/>
+          <Setter Property="FontWeight" Value="Bold"/>
+          <Setter Property="FontFamily" Value="Century"/>
+          <Setter Property="Padding" Value="10"/>
+          <Setter Property="Margin" Value="10"/>
+          <Setter Property="BorderThickness" Value="2"/>
+          <Setter Property="BorderBrush" Value="Black"/>
+       </Style>
+       
+       <Style Selector="TextBox.t1">
+          <Setter Property="Width" Value="715"/>
+          <Setter Property="Height" Value="85"/>
+          <Setter Property="FontSize" Value="65"/>
+          <Setter Property="BorderBrush" Value="Black"/>
+          <Setter Property="BorderThickness" Value="2"/>
+       </Style>
+       
+       <Style Selector="TextBox.t2">
+          <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+       </Style>
+    </UserControl.Styles>
+   
+    <Grid>
+       <Grid.Background>
+          <SolidColorBrush Color="#1B1F1F"/>
+       </Grid.Background>
+       
+       <TextBlock Text="Client" TextAlignment="Center" Foreground="White" Background="#272E2E" Height="180" VerticalAlignment="Top" FontSize="70" FontFamily="Century" Margin="0,0,0,610"/>
+       <Label x:Name="LblStatus" Content="Not Connected" HorizontalContentAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="50" FontFamily="Century" Margin="5,100,5,600"/>
+       <TextBox x:Name="TbxCommand" Classes="t1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Century" Height="80" Width="710" FontWeight="Light" Foreground="#696969" Background="#272E2E" BorderBrush="Black" TextChanged="TbxCommand_OnTextChanged" Margin="0,0,90,230"/>
+       <TextBlock x:Name="TblPlaceHolderCommand" Text="Enter a command..." FontSize="50" FontFamily="Century" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "White" IsHitTestVisible="False" Margin="130,10,90,200"/>
+       <Button x:Name="BtnClearCommand" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" FontFamily="Century" Height="76" Width="90" Foreground="White" Background="#272E2E" BorderThickness="0" Click="BtnClearCommand_OnClick" Margin="710,0,0,230"/>
+       <Button x:Name="BtnSendCommand" Classes="b1" Content="Send" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontFamily="Century" Height="110" Width="280" Foreground="Black" Background="#149D4D" BorderBrush="Black" Click="BtnSendCommand_OnClick" Margin="85,100,500,50"/>
+       <Button x:Name="BtnConnect" Classes="b1" Content="▶ Connect" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontFamily="Century" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnConnect_OnClick" Margin="520,100,100,50"/>
+       <TextBox x:Name="TbxResponse" Classes="t2" FontSize="50" FontFamily="Century" Height="250" Width="800" FontWeight="Light" Foreground="White" Background="#272E2E" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Margin="100,480,100,0"/>
+    </Grid>
 </UserControl>
