@@ -30,6 +30,9 @@ public partial class MainWindow : Window
     #region methods
     private void BtnStart_OnClick(object sender, RoutedEventArgs e)
     {
+        LblServerOnline.IsVisible = false;
+        LblServerOffline.IsVisible = false;
+        
         if (_tcpService.Online)
         {
             LblServerOnline.IsVisible = true;
@@ -45,6 +48,9 @@ public partial class MainWindow : Window
 
     private void BtnStop_OnClick(object sender, RoutedEventArgs e)
     {
+        LblServerOnline.IsVisible = false;
+        LblServerOffline.IsVisible = false;
+        
         if (!_tcpService.Online)
         {
             LblServerOffline.IsVisible = true;

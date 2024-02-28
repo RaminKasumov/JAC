@@ -1,4 +1,3 @@
-using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using Avalonia.Controls;
@@ -32,9 +31,9 @@ public partial class MainView : UserControl
     #endregion
 
     #region methods
-    private void TbxCommand_OnTextChanged(object? sender, TextChangedEventArgs e)
+    private void TbxRequest_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        if (!string.IsNullOrEmpty(TbxCommand.Text))
+        if (!string.IsNullOrEmpty(TbxRequest.Text))
         {
             TblPlaceHolderCommand.IsVisible = false;
         }
@@ -44,18 +43,22 @@ public partial class MainView : UserControl
         }
     }
 
-    private void BtnClearCommand_OnClick(object? sender, RoutedEventArgs e)
+    private void BtnClearCommand_OnClick(object sender, RoutedEventArgs e)
     {
-        TbxCommand.Text = "";
-        TbxCommand.Focus();
+        TbxRequest.Text = "";
+        TbxRequest.Focus();
         TblPlaceHolderCommand.IsVisible = true;
     }
     
-    private void BtnConnect_OnClick(object? sender, RoutedEventArgs e)
+    private void BtnConnect_OnClick(object sender, RoutedEventArgs e)
     {
-        if (LblStatus.Content == "Connected")
+        LblSocketConnected.IsVisible = false;
+        LblMessageMissing.IsVisible = false;
+        LblSocketNotConnected.IsVisible = false;
+        
+        if (LblStatus.Content != null && (string)LblStatus.Content == "Connected")
         {
-            //MessageBox.Show("Socket is already connected!!!", "SOCKET IS CONNECTED", MessageBoxButton.OK, MessageBoxImage.Information);
+            LblSocketConnected.IsVisible = true;
         }
         else
         {
@@ -69,34 +72,38 @@ public partial class MainView : UserControl
         }
     }
 
-    private void BtnSendCommand_OnClick(object? sender, RoutedEventArgs e)
+    private void BtnSendCommand_OnClick(object sender, RoutedEventArgs e)
     {
-        if (LblStatus.Content == "Connected")
+        LblSocketConnected.IsVisible = false;
+        LblMessageMissing.IsVisible = false;
+        LblSocketNotConnected.IsVisible = false;
+        
+        if (LblStatus.Content != null && (string)LblStatus.Content == "Connected")
         {
-            if (!string.IsNullOrEmpty(TbxCommand.Text))
+            if (!string.IsNullOrEmpty(TbxRequest.Text))
             {
-                if (TbxCommand.Text == "exit")
+                if (TbxRequest.Text == "exit")
                 {
                     LblStatus.Content = "Not Connected";
                     LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
                 }
                 
-                _writer.SendText(TbxCommand.Text);
+                _writer.SendText(TbxRequest.Text);
 
                 string response = _reader.ReceiveText();
 
                 TbxResponse.Text = response;
                 
-                TbxCommand.Text = "";
+                TbxRequest.Text = "";
             }
             else
             {
-                //MessageBox.Show("Please enter a command!!!", "NO COMMAND", MessageBoxButton.OK, MessageBoxImage.Error);
+                LblMessageMissing.IsVisible = true;
             }
         }
         else
         {
-            //MessageBox.Show("Client is not connected to server!!!", "CLIENT IS NOT CONNECTED", MessageBoxButton.OK, MessageBoxImage.Error);
+            LblSocketNotConnected.IsVisible = true;
         }
     }
     #endregion
