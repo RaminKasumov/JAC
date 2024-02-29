@@ -20,7 +20,7 @@ namespace JAC.Service.Core
             }
             else
             {
-                return "Connection has been terminated. Goodbye!";
+                return "Connection terminated.";
             }
         }
         #endregion

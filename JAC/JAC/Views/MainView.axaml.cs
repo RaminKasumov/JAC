@@ -1,10 +1,13 @@
+using System;
 using System.Net;
 using System.Net.Sockets;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using JAC.Shared;
 using Color = Avalonia.Media.Color;
+using Key = Avalonia.Remote.Protocol.Input.Key;
 
 namespace JAC.Views;
 
@@ -27,6 +30,9 @@ public partial class MainView : UserControl
         _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         _reader = new SocketReader(_clientSocket, _bufferSize);
         _writer = new SocketWriter(_clientSocket);
+        
+        TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
     }
     #endregion
 
@@ -40,6 +46,14 @@ public partial class MainView : UserControl
         else
         {
             TblPlaceHolderCommand.IsVisible = true;
+        }
+    }
+    
+    private void TbxRequest_OnKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Avalonia.Input.Key.Enter)
+        {
+            BtnSendCommand_OnClick(sender, e);
         }
     }
 
@@ -93,6 +107,9 @@ public partial class MainView : UserControl
                 string response = _reader.ReceiveText();
 
                 TbxResponse.Text = response;
+                
+                LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+                LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
                 
                 TbxRequest.Text = "";
             }
