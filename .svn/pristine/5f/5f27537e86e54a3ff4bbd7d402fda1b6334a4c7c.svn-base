@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:JAC.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="800"
+             x:Class="JAC.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <UserControl.Styles>
+       <Style Selector="Button.b1:pointerover /template/ ContentPresenter">
+          <Setter Property="Padding" Value="15"/>
+          <Setter Property="Foreground" Value="White"/>
+          <Setter Property="Background" Value="#0F5348"/>
+       </Style>
+       
+       <Style Selector="Button.b2:pointerover /template/ ContentPresenter">
+          <Setter Property="Padding" Value="20"/>
+          <Setter Property="Foreground" Value="Black"/>
+          <Setter Property="Background" Value="#149D4D"/>
+       </Style>
+       
+       <Style Selector="Button.b3:pointerover /template/ ContentPresenter">
+          <Setter Property="Padding" Value="15"/>
+          <Setter Property="Foreground" Value="White"/>
+          <Setter Property="Background" Value="#272E2E"/>
+       </Style>
+    </UserControl.Styles>
+   
+    <Grid>
+       <Grid.Background>
+          <SolidColorBrush Color="#1B1F1F"/>
+       </Grid.Background>
+       
+       <TextBlock Text="Client" TextAlignment="Center" Foreground="White" Background="#272E2E" Height="180" VerticalAlignment="Top" FontSize="70" FontFamily="Century" Margin="0,0,0,610"/>
+       <Label x:Name="LblStatus" Content="Not Connected" HorizontalContentAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="50" FontFamily="Century" Margin="0,100,0,620"/>
+       <TextBox x:Name="TbxDate" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" FontFamily="Century" Height="50" Width="180" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" CaretBrush="White" Margin="0,15,0,380"/>
+       <TextBox x:Name="TbxRequest" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="55" FontFamily="Century" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" TextChanged="TbxRequest_OnTextChanged" KeyDown="TbxRequest_OnKeyDown" CaretBrush="White" Padding="15,5,0,0" Margin="0,0,85,170"/>
+       <Label x:Name="LblRequestTime" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#508F85" Background="Transparent" FontSize="25" FontFamily="Century" Margin="420,0,0,140"/>
+       <TextBlock x:Name="TblPlaceHolderCommand" Text="Enter a message..." FontSize="45" FontFamily="Century" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "White" IsHitTestVisible="False" Margin="155,15,0,140"/>
+       <Button x:Name="BtnClearCommand" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" FontFamily="Century" Height="80" Width="85" Foreground="White" Background="#0F5348" BorderThickness="0" Click="BtnClearCommand_OnClick" Margin="600,0,0,170"/>
+       <Button x:Name="BtnSendCommand" Classes="b2" CornerRadius="20" Content="Send" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="60" FontFamily="Century" FontWeight="Bold" Height="110" Width="280" Foreground="Black" Background="#149D4D" BorderBrush="Black" Click="BtnSendCommand_OnClick" Margin="100,170,500,0"/>
+       <Button x:Name="BtnConnect" Classes="b3" CornerRadius="20" Content="▶ Connect" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontFamily="Century" FontWeight="Bold" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnConnect_OnClick" Margin="500,170,100,0"/>
+       <TextBox x:Name="TbxResponse" CornerRadius="20" FontSize="55" FontFamily="Century" Height="80" Width="680" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" IsReadOnly="True" CaretBrush="White" Padding="15,5,0,0" Margin="100,500,100,0"/>
+       <Label x:Name="LblResponseTime" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#508F85" Background="Transparent" FontSize="25" FontFamily="Century" Margin="585,535,0,0"/>
+       <Label x:Name="LblSocketConnected" Content="Socket is already connected!!!" HorizontalContentAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Century" IsVisible="False" IsHitTestVisible="False" Margin="0,360,0,0"/>
+       <Label x:Name="LblMessageMissing" Content="Enter a message!!!" HorizontalContentAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Century" IsVisible="False" IsHitTestVisible="False" Margin="0,360,0,0"/>
+       <Label x:Name="LblSocketNotConnected" Content="Client is not connected!!!" HorizontalContentAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Century" IsVisible="False" IsHitTestVisible="False" Margin="0,360,0,0"/>
+    </Grid>
+</UserControl>
