@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Threading;
 using JAC.Shared;
+using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
@@ -30,14 +32,16 @@ namespace JAC.Service.Core
         const int BufferSize = 1024;
         #endregion
         
-        #region property
+        #region properties
         /// <summary>
         /// Auto-property for Socket of Client
         /// </summary>
-        public Socket ClientSocket
-        {
-            get; private set;
-        }
+        public Socket ClientSocket { get; private set; }
+        
+        /// <summary>
+        /// Auto-property for ChatUser
+        /// </summary>
+        public IUser ChatUser { get; private set; }
         #endregion
 
         #region constructor
@@ -70,18 +74,20 @@ namespace JAC.Service.Core
         {
             try
             {
+                Login();
+                
                 while (true)
                 {
                     string receivedText = _reader.ReceiveText();
 
                     _serviceLogger.LogRequestInfo($"[{DateTime.Now.ToShortTimeString()}] Received request from {ClientSocket.RemoteEndPoint}: \"{receivedText}\".");
 
-                    RequestHandler requestHandler = new RequestHandler();
-                    string response = requestHandler.GetResponse(receivedText);
+                    ITextRequest request = RequestHandlerFactory.CreateTextRequest(receivedText);
+                    string response = request.GetResponse(receivedText);
                     
                     if (!_writer.SendText(response))
                     {
-                        _writer.SendText("Error occured!");
+                        SendText("Error occured!");
                     }
                     
                     _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Sending response to {ClientSocket.RemoteEndPoint}: \"{response}\".");
@@ -116,6 +122,39 @@ namespace JAC.Service.Core
             }
             
             OnSessionClosed();
+        }
+        
+        /// <summary>
+        /// Server sends a message to Client
+        /// </summary>
+        /// <param name="text">Message</param>
+        public void SendText(string text)
+        {
+            _writer.SendText(text);
+        }
+
+        /// <summary>
+        /// Server sends a message to Client
+        /// </summary>
+        public void Login()
+        {
+            ChatUser = new ChatUser();
+            while (true)
+            {
+                string nickname = _reader.ReceiveText();
+                ChatServiceDirectory instance = ChatServiceDirectory.GetInstance();
+                if (instance.FindUser(nickname) != null)
+                {
+                    _writer.SendText("User already exists!");
+                }
+                else
+                {
+                    ChatUser = new ChatUser(nickname);
+                    instance.AddUser(ChatUser);
+                    _writer.SendText("User logged in.");
+                    break;
+                }
+            }
         }
         
         /// <summary>

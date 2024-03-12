@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Net;
+using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
     public class RequestHandler : ITextRequest
     {
-        #region methods
+        #region method
         /// <summary>
         /// Command of Client is being processed
         /// </summary>

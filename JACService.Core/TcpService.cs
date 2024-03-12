@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {

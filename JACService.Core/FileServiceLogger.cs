@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {

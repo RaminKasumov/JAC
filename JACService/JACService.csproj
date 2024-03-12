@@ -21,6 +21,7 @@
 
 
     <ItemGroup>
+      <ProjectReference Include="..\JACService.Core.Contracts\JACService.Core.Contracts.csproj" />
       <ProjectReference Include="..\JACService.Core\JACService.Core.csproj" />
     </ItemGroup>
 </Project>

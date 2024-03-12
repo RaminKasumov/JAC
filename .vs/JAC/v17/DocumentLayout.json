@@ -7,39 +7,55 @@
       "RelativeMoniker": "D:0:0:{DB779492-CED2-4236-87CC-212A7EAA1529}|JAC\\JAC\\JAC.csproj|solutionrelative:jac\\jac\\views\\mainview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2CD0B1AB-B69F-4B66-9220-5779D827C6E4}|JACService\\JACService.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{2CD0B1AB-B69F-4B66-9220-5779D827C6E4}|JACService\\JACService.csproj|solutionrelative:jacservice\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\requesthandlerfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\requesthandlerfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\requesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\requesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\fileservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\fileservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\fileservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\requesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\requesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\chatservicedirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\chatservicedirectory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.core\\chatuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\chatuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CD0B1AB-B69F-4B66-9220-5779D827C6E4}|JACService\\JACService.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{2CD0B1AB-B69F-4B66-9220-5779D827C6E4}|JACService\\JACService.csproj|solutionrelative:jacservice\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\sessionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\sessionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\iservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\iservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\itextrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\itextrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core\\tcpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9ABD5730-A562-4F32-9F74-FF063C3424DB}|JACService.Core\\JACService.Core.csproj|solutionrelative:jacservice.core\\tcpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B13F683B-C355-44D0-AFAD-C9BDD850F793}|JACService.Shared\\JACService.Shared.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.shared\\socketreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core.contracts\\iservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|solutionrelative:jacservice.core.contracts\\iservicelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core.contracts\\itextrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|solutionrelative:jacservice.core.contracts\\itextrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|C:\\Users\\User\\source\\repos\\JAC\\jacservice.core.contracts\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47DEAF1-93BC-4D0E-B701-25CB1614F0FE}|JACService.Core.Contracts\\JACService.Core.Contracts.csproj|solutionrelative:jacservice.core.contracts\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B13F683B-C355-44D0-AFAD-C9BDD850F793}|JACService.Shared\\JACService.Shared.csproj|c:\\users\\user\\source\\repos\\jac\\jacservice.shared\\socketreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B13F683B-C355-44D0-AFAD-C9BDD850F793}|JACService.Shared\\JACService.Shared.csproj|solutionrelative:jacservice.shared\\socketreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -65,32 +81,59 @@
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JAC\\JAC\\Views\\MainView.axaml",
               "RelativeToolTip": "JAC\\JAC\\Views\\MainView.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-02-29T14:45:06.581Z",
+              "WhenOpened": "2024-03-12T20:17:42.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "MainWindow.axaml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService\\MainWindow.axaml",
               "RelativeDocumentMoniker": "JACService\\MainWindow.axaml",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService\\MainWindow.axaml",
               "RelativeToolTip": "JACService\\MainWindow.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-02-27T21:12:30.71Z",
+              "WhenOpened": "2024-03-12T20:17:28.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "ChatServiceDirectory.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ChatServiceDirectory.cs",
+              "RelativeDocumentMoniker": "JACService.Core\\ChatServiceDirectory.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ChatServiceDirectory.cs",
+              "RelativeToolTip": "JACService.Core\\ChatServiceDirectory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T20:17:22.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatUser.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ChatUser.cs",
+              "RelativeDocumentMoniker": "JACService.Core\\ChatUser.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ChatUser.cs",
+              "RelativeToolTip": "JACService.Core\\ChatUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T20:17:20.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ClientManager.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ClientManager.cs",
               "RelativeDocumentMoniker": "JACService.Core\\ClientManager.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ClientManager.cs",
               "RelativeToolTip": "JACService.Core\\ClientManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:12:15.994Z"
+              "WhenOpened": "2024-03-12T20:17:17.475Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -100,73 +143,105 @@
               "RelativeDocumentMoniker": "JACService.Core\\FileServiceLogger.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\FileServiceLogger.cs",
               "RelativeToolTip": "JACService.Core\\FileServiceLogger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:12:07.769Z"
+              "WhenOpened": "2024-03-12T20:17:14.751Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IServiceLogger.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\IServiceLogger.cs",
-              "RelativeDocumentMoniker": "JACService.Core\\IServiceLogger.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\IServiceLogger.cs",
-              "RelativeToolTip": "JACService.Core\\IServiceLogger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:12:02.845Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ITextRequest.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ITextRequest.cs",
-              "RelativeDocumentMoniker": "JACService.Core\\ITextRequest.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ITextRequest.cs",
-              "RelativeToolTip": "JACService.Core\\ITextRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:58.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "RequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\RequestHandler.cs",
               "RelativeDocumentMoniker": "JACService.Core\\RequestHandler.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\RequestHandler.cs",
               "RelativeToolTip": "JACService.Core\\RequestHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:48.706Z"
+              "WhenOpened": "2024-03-12T20:17:11.836Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "RequestHandlerFactory.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\RequestHandlerFactory.cs",
+              "RelativeDocumentMoniker": "JACService.Core\\RequestHandlerFactory.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\RequestHandlerFactory.cs",
+              "RelativeToolTip": "JACService.Core\\RequestHandlerFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T20:17:08.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "SessionHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\SessionHandler.cs",
               "RelativeDocumentMoniker": "JACService.Core\\SessionHandler.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\SessionHandler.cs",
               "RelativeToolTip": "JACService.Core\\SessionHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:40.006Z"
+              "WhenOpened": "2024-03-12T19:53:48.792Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TcpService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\TcpService.cs",
               "RelativeDocumentMoniker": "JACService.Core\\TcpService.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\TcpService.cs",
               "RelativeToolTip": "JACService.Core\\TcpService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:32.651Z"
+              "WhenOpened": "2024-03-12T19:53:41.172Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
+              "Title": "IServiceLogger.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\IServiceLogger.cs",
+              "RelativeDocumentMoniker": "JACService.Core.Contracts\\IServiceLogger.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\IServiceLogger.cs",
+              "RelativeToolTip": "JACService.Core.Contracts\\IServiceLogger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T19:53:27.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ITextRequest.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\ITextRequest.cs",
+              "RelativeDocumentMoniker": "JACService.Core.Contracts\\ITextRequest.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\ITextRequest.cs",
+              "RelativeToolTip": "JACService.Core.Contracts\\ITextRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T19:52:34.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IUser.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\IUser.cs",
+              "RelativeDocumentMoniker": "JACService.Core.Contracts\\IUser.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core.Contracts\\IUser.cs",
+              "RelativeToolTip": "JACService.Core.Contracts\\IUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T19:52:21.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "SocketReader.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Shared\\SocketReader.cs",
               "RelativeDocumentMoniker": "JACService.Shared\\SocketReader.cs",
@@ -174,11 +249,12 @@
               "RelativeToolTip": "JACService.Shared\\SocketReader.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:25.063Z"
+              "WhenOpened": "2024-03-12T20:16:52.494Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "SocketWriter.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Shared\\SocketWriter.cs",
               "RelativeDocumentMoniker": "JACService.Shared\\SocketWriter.cs",
@@ -186,7 +262,8 @@
               "RelativeToolTip": "JACService.Shared\\SocketWriter.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T21:11:04.058Z"
+              "WhenOpened": "2024-03-12T19:52:07.483Z",
+              "EditorCaption": ""
             }
           ]
         }
