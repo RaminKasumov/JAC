@@ -10,7 +10,7 @@ namespace JACService;
 
 public partial class MainWindow : Window
 {
-    #region instancevariable
+    #region instancevariables
     readonly int _backLog = 20;
 
     readonly TcpService _tcpService;
@@ -25,6 +25,8 @@ public partial class MainWindow : Window
         _serviceLogger = new FileServiceLogger();
             
         _tcpService = new TcpService(4711, _serviceLogger);
+        
+        TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
     }
     #endregion
 

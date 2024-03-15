@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using JACService.Core.Contracts;
+﻿using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
@@ -14,9 +12,12 @@ namespace JAC.Service.Core
         /// <returns>Returns a response to Client</returns>
         public string GetResponse(string command)
         {
+            string[] splitter = command.Split(' ');
+            string result = command.Substring(splitter[0].Length + 1);
+            
             if (command != "exit")
             {
-                string output = $"<<{command}>>";
+                string output = $"<<{result}>>";
                 return output;
             }
             else

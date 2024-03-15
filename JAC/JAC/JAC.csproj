@@ -20,6 +20,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\JACService.Core\JACService.Core.csproj" />
       <ProjectReference Include="..\..\JACService.Shared\JACService.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\JACClient.axaml.cs">
+        <DependentUpon>JACClient.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

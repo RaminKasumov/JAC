@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Sockets;
-using System.Threading;
 using JAC.Shared;
 using JACService.Core.Contracts;
 
@@ -36,12 +35,12 @@ namespace JAC.Service.Core
         /// <summary>
         /// Auto-property for Socket of Client
         /// </summary>
-        public Socket ClientSocket { get; private set; }
+        public Socket ClientSocket { get; }
         
         /// <summary>
         /// Auto-property for ChatUser
         /// </summary>
-        public IUser ChatUser { get; private set; }
+        IUser ChatUser { get; set; }
         #endregion
 
         #region constructor
@@ -56,6 +55,7 @@ namespace JAC.Service.Core
             _serviceLogger = serviceLogger;
             _reader = new SocketReader(ClientSocket, BufferSize);
             _writer = new SocketWriter(ClientSocket);
+            ChatUser = new ChatUser();
         }
         #endregion
         
@@ -85,7 +85,7 @@ namespace JAC.Service.Core
                     ITextRequest request = RequestHandlerFactory.CreateTextRequest(receivedText);
                     string response = request.GetResponse(receivedText);
                     
-                    if (!_writer.SendText(response))
+                    if (!SendText(response))
                     {
                         SendText("Error occured!");
                     }
@@ -128,30 +128,40 @@ namespace JAC.Service.Core
         /// Server sends a message to Client
         /// </summary>
         /// <param name="text">Message</param>
-        public void SendText(string text)
+        /// <returns>Returns true if the message has been sent, otherwise false</returns>
+        private bool SendText(string text)
         {
-            _writer.SendText(text);
+            if (_writer.SendText(text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
-        /// Server sends a message to Client
+        /// Server logs in a User
         /// </summary>
-        public void Login()
+        private void Login()
         {
-            ChatUser = new ChatUser();
-            while (true)
+            while (!ChatUser.IsLoggedIn)
             {
-                string nickname = _reader.ReceiveText();
+                string receivedText = _reader.ReceiveText();
+                string[] splitter = receivedText.Split(' ');
+                string nickname = receivedText.Substring(splitter[0].Length + 1);
                 ChatServiceDirectory instance = ChatServiceDirectory.GetInstance();
+                
                 if (instance.FindUser(nickname) != null)
                 {
-                    _writer.SendText("User already exists!");
+                    SendText("Error: User already exists!");
                 }
                 else
                 {
                     ChatUser = new ChatUser(nickname);
                     instance.AddUser(ChatUser);
-                    _writer.SendText("User logged in.");
+                    SendText("User logged in.");
                     break;
                 }
             }
@@ -160,7 +170,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Raises the SessionClosed event by invoking it, notifying subscribers about the session closure
         /// </summary>
-        protected virtual void OnSessionClosed()
+        private void OnSessionClosed()
         {
             SessionClosed?.Invoke(this, EventArgs.Empty);
         }

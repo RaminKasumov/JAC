@@ -32,6 +32,7 @@ namespace JAC.Shared
         /// Message is being sent to the Socket of Client
         /// </summary>
         /// <param name="text">Message</param>
+        /// <returns>Returns true if the message was sent successfully, otherwise false</returns>
         public bool SendText(string text)
         {
             try

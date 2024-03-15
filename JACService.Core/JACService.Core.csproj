@@ -40,6 +40,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ChatClient.cs" />
         <Compile Include="ChatServiceDirectory.cs" />
         <Compile Include="ChatUser.cs" />
         <Compile Include="ClientManager.cs" />

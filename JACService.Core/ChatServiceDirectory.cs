@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -21,7 +22,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Property for the instance of ChatServiceDirectory
         /// </summary>
-        public static ChatServiceDirectory Instance { get; } = new ChatServiceDirectory();
+        static ChatServiceDirectory Instance { get; } = new ChatServiceDirectory();
         #endregion
 
         #region constructor
@@ -38,7 +39,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Returns the instance of ChatServiceDirectory
         /// </summary>
-        /// <returns>Return the existing instance</returns>
+        /// <returns>Returns the existing instance</returns>
         public static ChatServiceDirectory GetInstance()
         {
             return Instance;

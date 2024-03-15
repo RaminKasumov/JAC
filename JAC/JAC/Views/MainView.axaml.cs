@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using JAC.Service.Core;
 using JAC.Shared;
 
 namespace JAC.Views;
@@ -12,22 +13,17 @@ namespace JAC.Views;
 public partial class MainView : UserControl
 {
     #region instancevariables
-    readonly int _bufferSize = 1024;
+    readonly JACClient _client;
 
-    readonly Socket _clientSocket;
-        
-    readonly SocketReader _reader;
-        
-    readonly SocketWriter _writer;
+    readonly ChatClient _chatClient;
     #endregion
-    
+
     #region constructor
     public MainView()
     {
         InitializeComponent();
-        _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        _reader = new SocketReader(_clientSocket, _bufferSize);
-        _writer = new SocketWriter(_clientSocket);
+        _client = new JACClient(this);
+        _chatClient = ChatClient.GetInstance();
         
         TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
         LblNicknameTime.Content = $"{DateTime.Now.ToShortTimeString()}";
@@ -39,11 +35,11 @@ public partial class MainView : UserControl
     {
         if (!string.IsNullOrEmpty(TbxNickname.Text))
         {
-            TblPlaceHolderCommand.IsVisible = false;
+            TblPlaceHolder.IsVisible = false;
         }
         else
         {
-            TblPlaceHolderCommand.IsVisible = true;
+            TblPlaceHolder.IsVisible = true;
         }
     }
     
@@ -55,16 +51,38 @@ public partial class MainView : UserControl
         }
     }
 
-    private void BtnClearCommand_OnClick(object sender, RoutedEventArgs e)
+    private void BtnClear_OnClick(object sender, RoutedEventArgs e)
     {
         TbxNickname.Text = "";
         TbxNickname.Focus();
-        TblPlaceHolderCommand.IsVisible = true;
+        TblPlaceHolder.IsVisible = true;
     }
-    
+
     private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        LblLoginError.IsVisible = false;
+
+        IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 4711);
+
+        Socket socket = _chatClient.ClientSocket;
+
+        SocketWriter writer = _chatClient.Writer;
+        SocketReader reader = _chatClient.Reader;
+
+        socket.Connect(endPoint);
+
+        writer.SendText($"/login {TbxNickname.Text}");
+        string receivedText = reader.ReceiveText();
+
+        if (receivedText == "User logged in.")
+        {
+            _client.Show();
+            TbxNickname.Text = "";
+        }
+        else
+        {
+            LblLoginError.IsVisible = true;
+        }
     }
     #endregion
 }

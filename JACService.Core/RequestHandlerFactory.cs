@@ -14,9 +14,8 @@ namespace JAC.Service.Core
         public static ITextRequest CreateTextRequest(string request)
         {
             string[] splitRequest = request.Split(' ');
-            request = splitRequest[0];
             
-            if (request == "broadcast")
+            if (splitRequest[0] == "/broadcast")
             {
                 return new RequestHandler();
             }
