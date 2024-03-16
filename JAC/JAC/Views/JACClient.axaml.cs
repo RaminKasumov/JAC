@@ -70,43 +70,34 @@ public partial class JACClient : Window
 
     private void BtnSendMessage_OnClick(object sender, RoutedEventArgs e)
     {
-        LblSocketConnected.IsVisible = false;
         LblMessageMissing.IsVisible = false;
-        LblSocketNotConnected.IsVisible = false;
         
-        if (LblStatus.Content != null && (string)LblStatus.Content == "Connected")
+        if (!string.IsNullOrEmpty(TbxRequest.Text))
         {
-            if (!string.IsNullOrEmpty(TbxRequest.Text))
+            if (TbxRequest.Text == "exit")
             {
-                if (TbxRequest.Text == "exit")
-                {
-                    LblStatus.Content = "Not Connected";
-                    LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
+                LblStatus.Content = "Not Connected";
+                LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
 
-                    Close();
-                }
-
-                SocketWriter writer = _chatClient.Writer;
-                SocketReader reader = _chatClient.Reader;
-                
-                writer.SendText($"/broadcast {TbxRequest.Text}");
-                string response = reader.ReceiveText();
-
-                TbxResponse.Text = response;
-                
-                LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
-                LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
-                
-                TbxRequest.Text = "";
+                Close();
             }
-            else
-            {
-                LblMessageMissing.IsVisible = true;
-            }
+
+            SocketWriter writer = _chatClient.Writer;
+            SocketReader reader = _chatClient.Reader;
+                
+            writer.SendText($"/broadcast {TbxRequest.Text}");
+            string response = reader.ReceiveText();
+
+            TbxResponse.Text = response;
+                
+            LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+            LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+                
+            TbxRequest.Text = "";
         }
         else
         {
-            LblSocketNotConnected.IsVisible = true;
+            LblMessageMissing.IsVisible = true;
         }
     }
     #endregion

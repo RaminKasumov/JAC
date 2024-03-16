@@ -60,28 +60,36 @@ public partial class MainView : UserControl
 
     private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
     {
+        LblNicknameMissing.IsVisible = false;
         LblLoginError.IsVisible = false;
 
-        IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 4711);
-
-        Socket socket = _chatClient.ClientSocket;
-
-        SocketWriter writer = _chatClient.Writer;
-        SocketReader reader = _chatClient.Reader;
-
-        socket.Connect(endPoint);
-
-        writer.SendText($"/login {TbxNickname.Text}");
-        string receivedText = reader.ReceiveText();
-
-        if (receivedText == "User logged in.")
+        if (!string.IsNullOrEmpty(TbxNickname.Text))
         {
-            _client.Show();
-            TbxNickname.Text = "";
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 4711);
+
+            Socket socket = _chatClient.ClientSocket;
+
+            SocketWriter writer = _chatClient.Writer;
+            SocketReader reader = _chatClient.Reader;
+
+            socket.Connect(endPoint);
+
+            writer.SendText($"/login {TbxNickname.Text}");
+            string receivedText = reader.ReceiveText();
+
+            if (receivedText == "User logged in.")
+            {
+                _client.Show();
+                TbxNickname.Text = "";
+            }
+            else
+            {
+                LblLoginError.IsVisible = true;
+            }
         }
         else
         {
-            LblLoginError.IsVisible = true;
+            LblNicknameMissing.IsVisible = true;
         }
     }
     #endregion
