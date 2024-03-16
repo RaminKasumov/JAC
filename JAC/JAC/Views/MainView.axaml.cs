@@ -13,20 +13,31 @@ namespace JAC.Views;
 public partial class MainView : UserControl
 {
     #region instancevariables
-    readonly JACClient _client;
-
-    readonly ChatClient _chatClient;
+    readonly Socket _clientSocket;
+    
+    readonly SocketWriter _writer;
+    
+    readonly SocketReader _reader;
     #endregion
 
     #region constructor
     public MainView()
     {
         InitializeComponent();
-        _client = new JACClient(this);
-        _chatClient = ChatClient.GetInstance();
         
-        TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        Client.IsVisible = false;
+        Login.IsVisible = true;
+
+        ChatClient chatClient = ChatClient.GetInstance();
+        _clientSocket = chatClient.ClientSocket;
+        _reader = chatClient.Reader;
+        _writer = chatClient.Writer;
+        
+        TbxLoginDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        TbxRequestDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        
         LblNicknameTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+        LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
     }
     #endregion
 
@@ -43,11 +54,31 @@ public partial class MainView : UserControl
         }
     }
     
+    private void TbxRequest_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(TbxRequest.Text))
+        {
+            TblPlaceHolderMessage.IsVisible = false;
+        }
+        else
+        {
+            TblPlaceHolderMessage.IsVisible = true;
+        }
+    }
+    
     private void TbxNickname_OnKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter)
         {
             BtnLogin_OnClick(sender, e);
+        }
+    }
+    
+    private void TbxRequest_OnKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            BtnSendMessage_OnClick(sender, e);
         }
     }
 
@@ -56,6 +87,13 @@ public partial class MainView : UserControl
         TbxNickname.Text = "";
         TbxNickname.Focus();
         TblPlaceHolder.IsVisible = true;
+    }
+    
+    private void BtnClearMessage_OnClick(object sender, RoutedEventArgs e)
+    {
+        TbxRequest.Text = "";
+        TbxRequest.Focus();
+        TblPlaceHolderMessage.IsVisible = true;
     }
 
     private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
@@ -67,29 +105,67 @@ public partial class MainView : UserControl
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 4711);
 
-            Socket socket = _chatClient.ClientSocket;
+            if (!_clientSocket.Connected)
+            {
+                _clientSocket.Connect(endPoint);
+            }
 
-            SocketWriter writer = _chatClient.Writer;
-            SocketReader reader = _chatClient.Reader;
-
-            socket.Connect(endPoint);
-
-            writer.SendText($"/login {TbxNickname.Text}");
-            string receivedText = reader.ReceiveText();
+            _writer.SendText($"/login {TbxNickname.Text}");
+            string receivedText = _reader.ReceiveText();
 
             if (receivedText == "User logged in.")
             {
-                _client.Show();
+                Client.IsVisible = true;
+                Login.IsVisible = false;
+                
                 TbxNickname.Text = "";
             }
             else
             {
                 LblLoginError.IsVisible = true;
+                
+                TbxNickname.Text = "";
             }
         }
         else
         {
             LblNicknameMissing.IsVisible = true;
+        }
+    }
+
+    private void BtnSendMessage_OnClick(object sender, RoutedEventArgs e)
+    {
+        LblSocketNotConnected.IsVisible = false;
+        LblMessageMissing.IsVisible = false;
+
+        if (LblStatus.Content != null && (string)LblStatus.Content == "Connected")
+        {
+            if (!string.IsNullOrEmpty(TbxRequest.Text))
+            {
+                if (TbxRequest.Text == "exit")
+                {
+                    LblStatus.Content = "Not Connected";
+                    LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
+                }
+            
+                _writer.SendText($"/broadcast {TbxRequest.Text}");
+                string response = _reader.ReceiveText();
+
+                TbxResponse.Text = response;
+                
+                LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+                LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+                
+                TbxRequest.Text = "";
+            }
+            else
+            {
+                LblMessageMissing.IsVisible = true;
+            }
+        }
+        else
+        {
+            LblSocketNotConnected.IsVisible = true;
         }
     }
     #endregion

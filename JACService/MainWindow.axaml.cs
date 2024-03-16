@@ -14,17 +14,15 @@ public partial class MainWindow : Window
     readonly int _backLog = 20;
 
     readonly TcpService _tcpService;
-        
-    readonly FileServiceLogger _serviceLogger;
     #endregion
     
     #region constructor
     public MainWindow()
     {
         InitializeComponent();
-        _serviceLogger = new FileServiceLogger();
-            
-        _tcpService = new TcpService(4711, _serviceLogger);
+        
+        FileServiceLogger serviceLogger = new FileServiceLogger();
+        _tcpService = new TcpService(4711, serviceLogger);
         
         TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
     }

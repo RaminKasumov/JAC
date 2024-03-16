@@ -15,7 +15,7 @@ namespace JAC.Service.Core
             string[] splitter = command.Split(' ');
             string result = command.Substring(splitter[0].Length + 1);
             
-            if (command != "exit")
+            if (result != "exit")
             {
                 string output = $"<<{result}>>";
                 return output;

@@ -22,18 +22,39 @@
     </UserControl.Styles>
    
     <Grid>
-        <Grid.Background>
-           <SolidColorBrush Color="#1B1F1F"/>
-        </Grid.Background>
+       <Grid x:Name="Login">
+          <Grid.Background>
+             <SolidColorBrush Color="#1B1F1F"/>
+          </Grid.Background>
        
-        <TextBlock Text="Sign In" FontSize="100" FontFamily="Sans-Serif" TextAlignment="Center" Foreground="White" Background="#272E2E" Height="150" VerticalAlignment="Top" Margin="0,0,0,310"/>
-        <TextBox x:Name="TbxDate" CornerRadius="20" FontSize="30" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="#C0C4C4" Background="Transparent" BorderBrush="Black" CaretBrush="White" IsReadOnly="True" Margin="0,160,0,100"/>
-        <TextBox x:Name="TbxNickname" CornerRadius="20" FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" TextChanged="TbxNickname_OnTextChanged" KeyDown="TbxNickname_OnKeyDown" CaretBrush="White" Padding="15,10,0,0" Margin="0,280,0,10"/>
-        <Label x:Name="LblNicknameTime" FontSize="25" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#508F85" Background="Transparent" Margin="490,315,0,60"/>
-        <TextBlock x:Name="TblPlaceHolder" Text="Enter a nickname..." FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "#C0C4C4" IsHitTestVisible="False" Margin="240,291,0,60"/>
-        <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Sans-Serif" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClear_OnClick" Margin="690,280,0,60"/>
-        <Label x:Name="LblNicknameMissing" FontSize="40" FontFamily="Sans-Serif" Content="Enter a nickname!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,380,0,0"/>
-        <Label x:Name="LblLoginError" FontSize="40" FontFamily="Sans-Serif" Content="User already exists!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,380,0,0"/>
-        <Button x:Name="BtnLogin" Classes="b2" CornerRadius="20" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnLogin_OnClick" Margin="0,550,0,200"/>
+          <TextBlock Text="Sign In" FontSize="100" FontFamily="Sans-Serif" TextAlignment="Center" Foreground="White" Background="#272E2E" Height="150" VerticalAlignment="Top" Margin="0,0,0,310"/>
+          <TextBox x:Name="TbxLoginDate" CornerRadius="20" FontSize="30" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="#C0C4C4" Background="Transparent" BorderBrush="Black" CaretBrush="White" IsReadOnly="True" Margin="0,160,0,100"/>
+          <TextBox x:Name="TbxNickname" CornerRadius="20" FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" TextChanged="TbxNickname_OnTextChanged" KeyDown="TbxNickname_OnKeyDown" CaretBrush="White" Padding="15,10,0,0" Margin="0,280,0,10"/>
+          <Label x:Name="LblNicknameTime" FontSize="25" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#508F85" Background="Transparent" Margin="490,315,0,60"/>
+          <TextBlock x:Name="TblPlaceHolder" Text="Enter a nickname..." FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "#C0C4C4" IsHitTestVisible="False" Margin="240,291,0,60"/>
+          <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Sans-Serif" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClear_OnClick" Margin="690,280,0,60"/>
+          <Label x:Name="LblNicknameMissing" FontSize="40" FontFamily="Sans-Serif" Content="Enter a nickname!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,380,0,0"/>
+          <Label x:Name="LblLoginError" FontSize="40" FontFamily="Sans-Serif" Content="User already exists!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,380,0,0"/>
+          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="20" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnLogin_OnClick" Margin="0,550,0,200"/>
+       </Grid>
+   
+       <Grid x:Name="Client">
+          <Grid.Background>
+             <SolidColorBrush Color="#1B1F1F"/>
+          </Grid.Background>
+       
+          <TextBlock Text="Client" FontSize="70" FontFamily="Sans-Serif" TextAlignment="Center" Foreground="White" Background="#272E2E" Height="180" VerticalAlignment="Top" Margin="0,0,0,610"/>
+          <Label x:Name="LblStatus" Content="Connected" FontSize="50" FontFamily="Sans-Serif" HorizontalContentAlignment="Center" Foreground="#149D4D" Background="Transparent" Margin="0,100,0,620"/>
+          <TextBox x:Name="TbxRequestDate" CornerRadius="20" FontSize="30" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="#C0C4C4" Background="Transparent" BorderBrush="Black" CaretBrush="White" IsReadOnly="True" Margin="0,190,0,200"/>
+          <TextBox x:Name="TbxRequest" CornerRadius="20" FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" TextChanged="TbxRequest_OnTextChanged" KeyDown="TbxRequest_OnKeyDown" CaretBrush="White" Padding="15,10,0,0" Margin="0,275,20,0"/>
+          <Label x:Name="LblRequestTime" FontSize="25" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#508F85" Background="Transparent" Margin="470,310,0,0"/>
+          <TextBlock x:Name="TblPlaceHolderMessage" Text="Enter a message..." FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "#C0C4C4" IsHitTestVisible="False" Margin="220,287,0,0"/>
+          <Button x:Name="BtnClearMessage" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Sans-Serif" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClearMessage_OnClick" Margin="670,275,0,0"/>
+          <Button x:Name="BtnSendMessage" Classes="b2" Content="Send" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnSendMessage_OnClick" Margin="200,445,210,0"/>
+          <TextBox x:Name="TbxResponse" CornerRadius="20" FontSize="40" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" IsReadOnly="True" CaretBrush="White" Padding="15,10,0,0" Margin="0,615,20,0"/>
+          <Label x:Name="LblResponseTime" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#508F85" Background="Transparent" FontSize="25" FontFamily="Sans-Serif" IsVisible="True" Margin="470,650,0,0"/>
+          <Label x:Name="LblMessageMissing" Content="Enter a message!!!" HorizontalAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Sans-Serif" IsVisible="False" IsHitTestVisible="False" Margin="0,365,0,0"/>
+          <Label x:Name="LblSocketNotConnected" Content="Client is not connected!!!" HorizontalAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Sans-Serif" IsVisible="False" IsHitTestVisible="False" Margin="0,365,0,0"/>
+       </Grid>
     </Grid>
 </UserControl>
