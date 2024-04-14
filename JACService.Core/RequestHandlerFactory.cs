@@ -15,9 +15,21 @@ namespace JAC.Service.Core
         {
             string[] splitRequest = request.Split(' ');
             
-            if (splitRequest[0] == "/broadcast")
+            if (splitRequest[0] == "/login")
+            {
+                return new LoginRequestHandler();
+            }
+            else if (splitRequest[0] == "/broadcast")
             {
                 return new RequestHandler();
+            }
+            else if (splitRequest[0] == "/getusers")
+            {
+                return new UsersRequestHandler();
+            }
+            else if (splitRequest[0] == "/getchannels")
+            {
+                return new ChannelsRequestHandler();
             }
             else
             {

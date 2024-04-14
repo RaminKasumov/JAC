@@ -149,19 +149,14 @@ namespace JAC.Service.Core
             while (!ChatUser.IsLoggedIn)
             {
                 string receivedText = _reader.ReceiveText();
-                string[] splitter = receivedText.Split(' ');
-                string nickname = receivedText.Substring(splitter[0].Length + 1);
-                ChatServiceDirectory instance = ChatServiceDirectory.GetInstance();
-                
-                if (instance.FindUser(nickname) != null)
+                ITextRequest request = RequestHandlerFactory.CreateTextRequest(receivedText);
+                string response = request.GetResponse(receivedText);
+
+                SendText(response);
+
+                if (response == "User logged in.")
                 {
-                    SendText("Error: User already exists!");
-                }
-                else
-                {
-                    ChatUser = new ChatUser(nickname);
-                    instance.AddUser(ChatUser);
-                    SendText("User logged in.");
+                    ChatUser = ((LoginRequestHandler)request).ChatUser;
                     break;
                 }
             }

@@ -110,22 +110,20 @@ public partial class MainView : UserControl
                 _clientSocket.Connect(endPoint);
             }
 
-            _writer.SendText($"/login {TbxNickname.Text}");
+            _writer.SendText(TbxNickname.Text);
             string receivedText = _reader.ReceiveText();
 
             if (receivedText == "User logged in.")
             {
                 Client.IsVisible = true;
                 Login.IsVisible = false;
-                
-                TbxNickname.Text = "";
             }
             else
             {
                 LblLoginError.IsVisible = true;
-                
-                TbxNickname.Text = "";
             }
+            
+            TbxNickname.Text = "";
         }
         else
         {
@@ -142,13 +140,13 @@ public partial class MainView : UserControl
         {
             if (!string.IsNullOrEmpty(TbxRequest.Text))
             {
-                if (TbxRequest.Text == "exit")
+                if (TbxRequest.Text == "/broadcast exit")
                 {
                     LblStatus.Content = "Not Connected";
                     LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
                 }
             
-                _writer.SendText($"/broadcast {TbxRequest.Text}");
+                _writer.SendText(TbxRequest.Text);
                 string response = _reader.ReceiveText();
 
                 TbxResponse.Text = response;

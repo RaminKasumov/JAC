@@ -132,6 +132,38 @@ namespace JAC.Service.Core
             }
             return null;
         }
+        
+        /// <summary>
+        /// Users in the Channel are being returned
+        /// </summary>
+        /// <param name="channel">Channel</param>
+        /// <returns>Returns all Users in the Channel</returns>
+        public IEnumerable<string> GetUsersByChannel(string channel)
+        {
+            if (string.IsNullOrEmpty(channel))
+            {
+                channel = "anonymous";
+            }
+
+            List<string> users = new List<string>();
+            foreach (IUser user in _users)
+            {
+                if (user.CurrentChannel == channel)
+                {
+                    users.Add(user.Nickname);
+                }
+            }
+            return users;
+        }
+
+        /// <summary>
+        /// All existing Channels are being returned
+        /// </summary>
+        /// <returns>Returns all Channels</returns>
+        public IEnumerable<string> GetChannelNames()
+        {
+            return _channels;
+        }
         #endregion
     }
 }

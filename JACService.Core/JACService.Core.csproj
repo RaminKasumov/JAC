@@ -40,16 +40,19 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ChannelsRequestHandler.cs" />
         <Compile Include="ChatClient.cs" />
         <Compile Include="ChatServiceDirectory.cs" />
         <Compile Include="ChatUser.cs" />
         <Compile Include="ClientManager.cs" />
         <Compile Include="FileServiceLogger.cs" />
+        <Compile Include="LoginRequestHandler.cs" />
         <Compile Include="RequestHandler.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="RequestHandlerFactory.cs" />
         <Compile Include="SessionHandler.cs" />
         <Compile Include="TcpService.cs" />
+        <Compile Include="UsersRequestHandler.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\JACService.Core.Contracts\JACService.Core.Contracts.csproj">

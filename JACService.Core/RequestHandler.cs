@@ -13,7 +13,7 @@ namespace JAC.Service.Core
         public string GetResponse(string command)
         {
             string[] splitter = command.Split(' ');
-            string result = command.Substring(splitter[0].Length + 1);
+            string result = command.Substring(splitter[0].Length).Trim();
             
             if (result != "exit")
             {
