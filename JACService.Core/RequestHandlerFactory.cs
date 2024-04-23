@@ -21,7 +21,11 @@ namespace JAC.Service.Core
             }
             else if (splitRequest[0] == "/broadcast")
             {
-                return new RequestHandler();
+                return new BroadcastRequestHandler();
+            }
+            else if (splitRequest[0] == "/whisper")
+            {
+                return new WhisperRequestHandler();
             }
             else if (splitRequest[0] == "/getusers")
             {

@@ -110,7 +110,7 @@ public partial class MainView : UserControl
                 _clientSocket.Connect(endPoint);
             }
 
-            _writer.SendText(TbxNickname.Text);
+            _writer.SendText($"/login {TbxNickname.Text}");
             string receivedText = _reader.ReceiveText();
 
             if (receivedText == "User logged in.")
@@ -140,7 +140,7 @@ public partial class MainView : UserControl
         {
             if (!string.IsNullOrEmpty(TbxRequest.Text))
             {
-                if (TbxRequest.Text == "/broadcast exit")
+                if (TbxRequest.Text.Contains("exit"))
                 {
                     LblStatus.Content = "Not Connected";
                     LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));

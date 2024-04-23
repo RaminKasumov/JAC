@@ -7,17 +7,23 @@
         Title="JACService">
     <Window.Styles>
         <Style Selector="Button.b1:pointerover /template/ ContentPresenter">
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="FontSize" Value="55"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="#149D4D"/>
-            <Setter Property="BorderBrush" Value="CadetBlue"/>
         </Style>
-       
+        
         <Style Selector="Button.b2:pointerover /template/ ContentPresenter">
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="FontSize" Value="55"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Background" Value="#D83F5D"/>
-            <Setter Property="BorderBrush" Value="DarkTurquoise"/>
         </Style>
     </Window.Styles>
     

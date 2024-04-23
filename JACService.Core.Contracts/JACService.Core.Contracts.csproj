@@ -39,6 +39,7 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="IChatMessage.cs" />
         <Compile Include="IServiceLogger.cs" />
         <Compile Include="ITextRequest.cs" />
         <Compile Include="IUser.cs" />

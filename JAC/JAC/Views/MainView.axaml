@@ -14,10 +14,13 @@
        </Style>
        
        <Style Selector="Button.b2:pointerover /template/ ContentPresenter">
-          <Setter Property="Padding" Value="15"/>
+          <Setter Property="FontSize" Value="45"/>
+          <Setter Property="Padding" Value="2"/>
+          <Setter Property="Margin" Value="2"/>
+          <Setter Property="BorderThickness" Value="2"/>
+          <Setter Property="BorderBrush" Value="Black"/>
           <Setter Property="Foreground" Value="White"/>
           <Setter Property="Background" Value="#272E2E"/>
-          <Setter Property="BorderBrush" Value="#508F85"/>
        </Style>
     </UserControl.Styles>
    
@@ -35,7 +38,7 @@
           <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Sans-Serif" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClear_OnClick" Margin="690,45,0,150"/>
           <Label x:Name="LblNicknameMissing" FontSize="40" FontFamily="Sans-Serif" Content="Enter a nickname!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,390,0,0"/>
           <Label x:Name="LblLoginError" FontSize="40" FontFamily="Sans-Serif" Content="User already exists!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,390,0,0"/>
-          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="20" Content="Login" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnLogin_OnClick" Margin="0,450,0,0"/>
+          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="20" Content="Login" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Click="BtnLogin_OnClick" Margin="0,450,0,0"/>
        </Grid>
    
        <Grid x:Name="Client">
@@ -50,7 +53,7 @@
           <Label x:Name="LblRequestTime" FontSize="25" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#508F85" Background="Transparent" Margin="470,0,0,40"/>
           <TextBlock x:Name="TblPlaceHolderMessage" Text="Enter a message..." FontSize="43" FontFamily="Sans-Serif" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "#C0C4C4" IsHitTestVisible="False" Margin="220,0,0,30"/>
           <Button x:Name="BtnClearMessage" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Sans-Serif" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClearMessage_OnClick" Margin="670,0,0,70"/>
-          <Button x:Name="BtnSendMessage" Classes="b2" Content="Send" CornerRadius="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Black" Click="BtnSendMessage_OnClick" Margin="200,270,210,0"/>
+          <Button x:Name="BtnSendMessage" Classes="b2" Content="Send" CornerRadius="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Sans-Serif" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Click="BtnSendMessage_OnClick" Margin="200,270,210,0"/>
           <TextBox x:Name="TbxResponse" CornerRadius="20" FontSize="43" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#0F5348" BorderBrush="Black" IsReadOnly="True" CaretBrush="White" Padding="15,10,0,0" Margin="0,570,20,0"/>
           <Label x:Name="LblResponseTime" FontSize="25" FontFamily="Sans-Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#508F85" Background="Transparent" Margin="470,600,0,0"/>
           <Label x:Name="LblMessageMissing" Content="Enter a message!!!" HorizontalAlignment="Center" Foreground="#FF486F" Background="Transparent" FontSize="40" FontFamily="Sans-Serif" IsVisible="False" IsHitTestVisible="False" Margin="0,405,0,0"/>
