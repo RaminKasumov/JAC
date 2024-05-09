@@ -19,6 +19,10 @@ namespace JAC.Service.Core
             {
                 return new LoginRequestHandler();
             }
+            else if (splitRequest[0] == "/join")
+            {
+                return new JoinChannelRequestHandler();
+            }
             else if (splitRequest[0] == "/broadcast")
             {
                 return new BroadcastRequestHandler();

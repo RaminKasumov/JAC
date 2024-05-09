@@ -1,9 +1,22 @@
-﻿using JACService.Core.Contracts;
+﻿using System;
+using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
     public class WhisperRequestHandler : ITextRequest
     {
+        #region instancevariables
+        /// <summary>
+        /// Receiver of the message
+        /// </summary>
+        string _receiver = "";
+        
+        /// <summary>
+        /// Message of the Client
+        /// </summary>
+        string _message = "";
+        #endregion
+        
         #region methods
         /// <summary>
         /// Command of Client is being processed
@@ -13,15 +26,15 @@ namespace JAC.Service.Core
         public string GetResponse(string command)
         {
             string[] splitter = command.Split(' ');
-            string recipient = splitter[1].Trim();
-            string message = splitter[splitter.Length - 1];
+
+            if (splitter.Length == 3)
+            {
+                _receiver = splitter[1].Trim();
+                _message = splitter[splitter.Length - 1];
+            }
             
-            LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
-            string userNickname = loginRequestHandler.ChatUser.Nickname;
-            
-            IChatMessage chatMessage = new ChatMessage(recipient, userNickname, message, true);
-            ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
-            chatMessageStorage.AddMessage(chatMessage);
+            IUser user = LoginRequestHandler.ChatUser;
+            Publish(user);
 
             return "ok";
         }
@@ -30,9 +43,11 @@ namespace JAC.Service.Core
         /// Checks if the command is request or message broadcast
         /// </summary>
         /// <param name="sender">Sender of the message</param>
-        public void Publish(IUser sender)
+        private void Publish(IUser sender)
         {
-            
+            IChatMessage chatMessage = new ChatMessage(_receiver, sender.Nickname, _message, true);
+            MessageDispatcher dispatcher = new MessageDispatcher(chatMessage);
+            dispatcher.Whisper();
         }
         #endregion
     }

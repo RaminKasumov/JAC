@@ -1,0 +1,34 @@
+﻿using System;
+
+namespace JACService.Core.Contracts
+{
+    public interface IChatMessage
+    {
+        #region properties
+        /// <summary>
+        /// Recipient of the message
+        /// </summary>
+        string Recipient { get; set; }
+        
+        /// <summary>
+        /// Sender of the message
+        /// </summary>
+        string Sender { get; set; }
+        
+        /// <summary>
+        /// Content of the message
+        /// </summary>
+        string Content { get; set; }
+        
+        /// <summary>
+        /// TimeStamp of the message
+        /// </summary>
+        DateTime TimeStamp { get; set; }
+        
+        /// <summary>
+        /// Is the message private or not
+        /// </summary>
+        bool IsPrivate { get; set; }
+        #endregion
+    }
+}

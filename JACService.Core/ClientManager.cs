@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
+using JAC.Shared;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -61,8 +62,10 @@ namespace JAC.Service.Core
                     _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A new client connected from: {session.ClientSocket.RemoteEndPoint}");
                 
                     ThreadStart threadStart = new ThreadStart(session.HandleCommunication);
-                    Thread thread = new Thread(threadStart);
-                    thread.IsBackground = true;
+                    Thread thread = new Thread(threadStart)
+                    {
+                        IsBackground = true
+                    };
                     thread.Start();
                 }
             }
@@ -88,6 +91,11 @@ namespace JAC.Service.Core
             _sessions.Remove(session);
             
             _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Amount of the clients: {_sessions.Count}");
+        }
+        
+        public void OnChatMessageReceived(object sender, EventArgs e)
+        {
+            
         }
         #endregion
     }

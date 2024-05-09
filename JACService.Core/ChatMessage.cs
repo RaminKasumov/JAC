@@ -9,30 +9,37 @@ namespace JAC.Service.Core
         /// <summary>
         /// Recipient of the message
         /// </summary>
-        public string Recipient { get; private set; }
+        public string Recipient { get; set; }
         
         /// <summary>
         /// Sender of the message
         /// </summary>
-        public string Sender { get; private set; }
+        public string Sender { get; set; }
         
         /// <summary>
         /// Content of the message
         /// </summary>
-        public string Content { get; }
+        public string Content { get; set; }
         
         /// <summary>
         /// TimeStamp of the message
         /// </summary>
-        public DateTime TimeStamp { get; }
+        public DateTime TimeStamp { get; set; }
         
         /// <summary>
         /// Is the message private or not
         /// </summary>
-        public bool IsPrivate { get; }
+        public bool IsPrivate { get; set; }
         #endregion
         
         #region constructor
+        /// <summary>
+        /// Constructor for the Class ChatMessage
+        /// </summary>
+        /// <param name="recipient">Recipient of the message</param>
+        /// <param name="sender">Sender of the message</param>
+        /// <param name="content">Content of the message</param>
+        /// <param name="isPrivate">Is the message private or not</param>
         public ChatMessage(string recipient, string sender, string content, bool isPrivate)
         {
             Recipient = recipient;

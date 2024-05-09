@@ -1,10 +1,24 @@
-﻿using System.Runtime.Remoting.Channels;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Channels;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
     public class BroadcastRequestHandler : ITextRequest
     {
+        #region instancevariables
+        /// <summary>
+        /// Instance variable for Channel
+        /// </summary>
+        string _channel = "";
+        
+        /// <summary>
+        /// Instance variable for Message
+        /// </summary>
+        string _message = "";
+        #endregion
+        
         #region methods
         /// <summary>
         /// Command of Client is being processed
@@ -14,36 +28,42 @@ namespace JAC.Service.Core
         public string GetResponse(string command)
         {
             string[] splitter = command.Split(' ');
-            string channel = "";
 
-            if (splitter.Length == 2)
+            if (splitter.Length == 3)
             {
-                channel = splitter[1].Trim();
+                _channel = splitter[1].Trim();
+            }
+            else if (splitter.Length == 2)
+            {
+                _channel = "anonymous";
+            }
+            
+            ChatServiceDirectory chatServiceDirectory = ChatServiceDirectory.GetInstance();
+
+            if (chatServiceDirectory.FindChannel(_channel) != null)
+            {
+                _message = splitter[splitter.Length - 1];
+            
+                IUser user = LoginRequestHandler.ChatUser;
+                Publish(user);
+                
+                return "ok";
             }
             else
             {
-                channel = "anonymous";
+                return "error";
             }
-            
-            string message = splitter[splitter.Length - 1];
-            
-            LoginRequestHandler loginRequestHandler = new LoginRequestHandler();
-            string userNickname = loginRequestHandler.ChatUser.Nickname;
-            
-            IChatMessage chatMessage = new ChatMessage(channel, userNickname, message, false);
-            ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
-            chatMessageStorage.AddMessage(chatMessage);
-
-            return "ok";
         }
         
         /// <summary>
         /// Checks if the command is request or message broadcast
         /// </summary>
         /// <param name="sender">Sender of the message</param>
-        public void Publish(IUser sender)
+        private void Publish(IUser sender)
         {
-            
+            IChatMessage chatMessage = new ChatMessage(_channel, sender.Nickname, _message, false);
+            MessageDispatcher dispatcher = new MessageDispatcher(chatMessage);
+            dispatcher.Broadcast();
         }
         #endregion
     }

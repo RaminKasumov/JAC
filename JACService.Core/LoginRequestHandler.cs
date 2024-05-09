@@ -8,7 +8,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Auto-property for ChatUser
         /// </summary>
-        public IUser ChatUser { get; private set; }
+        public static IUser ChatUser { get; private set; }
         #endregion
         
         #region method
@@ -21,17 +21,15 @@ namespace JAC.Service.Core
         {
             string[] splitter = command.Split(' ');
             string nickname = command.Substring(splitter[0].Length).Trim();
-            ChatServiceDirectory instance = ChatServiceDirectory.GetInstance();
+            ChatServiceDirectory directory = ChatServiceDirectory.GetInstance();
             
-            if (instance.FindUser(nickname) != null)
+            if (directory.FindUser(nickname) != null)
             {
                 return "Error: User already exists!";
             }
             else
             {
                 ChatUser = new ChatUser(nickname);
-                instance.AddUser(ChatUser);
-                instance.AddChannel(ChatUser.CurrentChannel);
                 return "User logged in.";
             }
         }

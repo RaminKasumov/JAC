@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Security;
 using JAC.Shared;
 using JACService.Core.Contracts;
 
@@ -22,6 +23,11 @@ namespace JAC.Service.Core
         /// Instance variable for Interface IServiceLogger
         /// </summary>
         readonly IServiceLogger _serviceLogger;
+        
+        /// <summary>
+        /// Instance variable for ChatServiceDirectory
+        /// </summary>
+        readonly ChatServiceDirectory _directory = ChatServiceDirectory.GetInstance();
         #endregion
 
         #region constant
@@ -89,11 +95,18 @@ namespace JAC.Service.Core
                     {
                         SendText("Error occured!");
                     }
+
+                    if (response.StartsWith("Channel"))
+                    {
+                        string[] splitter = response.Split(' ');
+                        ChatUser.CurrentChannel = splitter[1];
+                    }
                     
                     _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Sending response to {ClientSocket.RemoteEndPoint}: \"{response}\".");
                     
                     if (receivedText == "exit")
                     {
+                        _directory.RemoveUser(ChatUser);
                         Close();
                     }
                     else
@@ -104,6 +117,7 @@ namespace JAC.Service.Core
             }
             catch (Exception)
             {
+                _directory.RemoveUser(ChatUser);
                 Close();
             }
         }
@@ -156,7 +170,9 @@ namespace JAC.Service.Core
 
                 if (response == "User logged in.")
                 {
-                    ChatUser = ((LoginRequestHandler)request).ChatUser;
+                    ChatUser = LoginRequestHandler.ChatUser;
+                    _directory.AddUser(ChatUser);
+                    _directory.AddChannel(ChatUser.CurrentChannel);
                     break;
                 }
             }
