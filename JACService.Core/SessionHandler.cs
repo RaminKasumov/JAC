@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Sockets;
-using System.Security;
 using JAC.Shared;
 using JACService.Core.Contracts;
 

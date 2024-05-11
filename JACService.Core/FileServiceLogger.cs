@@ -17,7 +17,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Constant for filepath
         /// </summary>
-        const string FILEPATH = @"ServiceInformation.txt";
+        const string Filepath = @"ServiceInformation.txt";
         #endregion
 
         #region methods
@@ -52,7 +52,7 @@ namespace JAC.Service.Core
 
             try
             {
-                File.AppendAllText(FILEPATH, message + Environment.NewLine);
+                File.AppendAllText(Filepath, message + Environment.NewLine);
             }
             catch (Exception ex)
             {

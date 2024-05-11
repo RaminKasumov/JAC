@@ -24,7 +24,7 @@ public partial class MainWindow : Window
         FileServiceLogger serviceLogger = new FileServiceLogger();
         _tcpService = new TcpService(4711, serviceLogger);
         
-        TbxDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        LblDate.Content = DateTime.Today.Date.ToString("dd.MM.yyyy");
     }
     #endregion
 

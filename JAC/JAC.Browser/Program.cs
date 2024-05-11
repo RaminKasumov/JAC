@@ -4,6 +4,9 @@ using Avalonia;
 using Avalonia.Browser;
 using Avalonia.ReactiveUI;
 using JAC;
+using Projektanker.Icons.Avalonia;
+using Projektanker.Icons.Avalonia.FontAwesome;
+using Projektanker.Icons.Avalonia.MaterialDesign;
 
 [assembly: SupportedOSPlatform("browser")]
 
@@ -15,5 +18,12 @@ internal sealed partial class Program
         .StartBrowserAppAsync("out");
 
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>();
+    {
+        IconProvider.Current
+            .Register<FontAwesomeIconProvider>()
+            .Register<MaterialDesignIconProvider>();
+
+        return AppBuilder.Configure<App>()
+            .LogToTrace();
+    }
 }

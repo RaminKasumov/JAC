@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
-using JAC.Shared;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -61,8 +60,7 @@ namespace JAC.Service.Core
                     
                     _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A new client connected from: {session.ClientSocket.RemoteEndPoint}");
                 
-                    ThreadStart threadStart = new ThreadStart(session.HandleCommunication);
-                    Thread thread = new Thread(threadStart)
+                    Thread thread = new Thread(session.HandleCommunication)
                     {
                         IsBackground = true
                     };
@@ -93,9 +91,14 @@ namespace JAC.Service.Core
             _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Amount of the clients: {_sessions.Count}");
         }
         
-        public void OnChatMessageReceived(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the ChatMessageReceived event by logging the information on the console
+        /// </summary>
+        /// <param name="sender">Triggering Event</param>
+        /// <param name="e">Event arguments</param>
+        private void OnChatMessageReceived(object sender, EventArgs e)
         {
-            
+            _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A message was received");
         }
         #endregion
     }

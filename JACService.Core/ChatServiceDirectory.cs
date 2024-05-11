@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core

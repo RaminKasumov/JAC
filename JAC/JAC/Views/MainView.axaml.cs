@@ -1,6 +1,8 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Channels;
+using Android.Net.Wifi.P2p;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -25,19 +27,20 @@ public partial class MainView : UserControl
     {
         InitializeComponent();
         
-        Client.IsVisible = false;
         Login.IsVisible = true;
+        ChatApp.IsVisible = false;
+        ChannelName.IsVisible = false;
+        Chat.IsVisible = false;
 
         ChatClient chatClient = ChatClient.GetInstance();
         _clientSocket = chatClient.ClientSocket;
         _reader = chatClient.Reader;
         _writer = chatClient.Writer;
         
-        TbxLoginDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
-        TbxRequestDate.Text = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        LblLoginDate.Content = DateTime.Today.Date.ToString("dd.MM.yyyy");
+        LblRequestDate.Content = DateTime.Today.Date.ToString("dd.MM.yyyy");
         
         LblNicknameTime.Content = $"{DateTime.Now.ToShortTimeString()}";
-        LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
     }
     #endregion
 
@@ -82,18 +85,11 @@ public partial class MainView : UserControl
         }
     }
 
-    private void BtnClear_OnClick(object sender, RoutedEventArgs e)
+    private void BtnClearMessage_OnClick(object sender, RoutedEventArgs e)
     {
         TbxNickname.Text = "";
         TbxNickname.Focus();
         TblPlaceHolder.IsVisible = true;
-    }
-    
-    private void BtnClearMessage_OnClick(object sender, RoutedEventArgs e)
-    {
-        TbxRequest.Text = "";
-        TbxRequest.Focus();
-        TblPlaceHolderMessage.IsVisible = true;
     }
 
     private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
@@ -115,8 +111,9 @@ public partial class MainView : UserControl
 
             if (receivedText == "User logged in.")
             {
-                Client.IsVisible = true;
                 Login.IsVisible = false;
+                ChatApp.IsVisible = true;
+                LblNickname.Content = TbxNickname.Text;
             }
             else
             {
@@ -131,39 +128,21 @@ public partial class MainView : UserControl
         }
     }
 
+    private void BtnAnonymousChat_OnClick(object sender, RoutedEventArgs e)
+    {
+        ChannelName.IsVisible = true;
+        Chat.IsVisible = true;
+        LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
+    }
+
     private void BtnSendMessage_OnClick(object sender, RoutedEventArgs e)
     {
-        LblSocketNotConnected.IsVisible = false;
-        LblMessageMissing.IsVisible = false;
-
-        if (LblStatus.Content != null && (string)LblStatus.Content == "Connected")
+        if (!string.IsNullOrEmpty(TbxRequest.Text))
         {
-            if (!string.IsNullOrEmpty(TbxRequest.Text))
-            {
-                if (TbxRequest.Text.Contains("exit"))
-                {
-                    LblStatus.Content = "Not Connected";
-                    LblStatus.Foreground = new SolidColorBrush(Color.FromRgb(255, 72, 111));
-                }
-            
-                _writer.SendText(TbxRequest.Text);
-                string response = _reader.ReceiveText();
-
-                TbxResponse.Text = response;
+            _writer.SendText(TbxRequest.Text);
+            string response = _reader.ReceiveText();
                 
-                LblRequestTime.Content = $"{DateTime.Now.ToShortTimeString()}";
-                LblResponseTime.Content = $"{DateTime.Now.ToShortTimeString()}";
-                
-                TbxRequest.Text = "";
-            }
-            else
-            {
-                LblMessageMissing.IsVisible = true;
-            }
-        }
-        else
-        {
-            LblSocketNotConnected.IsVisible = true;
+            TbxRequest.Text = "";
         }
     }
     #endregion
