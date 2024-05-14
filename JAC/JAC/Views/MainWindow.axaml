@@ -6,6 +6,6 @@
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="800"
         x:Class="JAC.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="JAC">
+        Title="JAC" WindowState="Maximized">
         <views:MainView />
 </Window>

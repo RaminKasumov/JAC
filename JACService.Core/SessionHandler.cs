@@ -45,7 +45,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Auto-property for ChatUser
         /// </summary>
-        IUser ChatUser { get; set; }
+        public IUser ChatUser { get; set; }
         #endregion
 
         #region constructor
@@ -142,7 +142,7 @@ namespace JAC.Service.Core
         /// </summary>
         /// <param name="text">Message</param>
         /// <returns>Returns true if the message has been sent, otherwise false</returns>
-        private bool SendText(string text)
+        public bool SendText(string text)
         {
             if (_writer.SendText(text))
             {

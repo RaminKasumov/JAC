@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -9,7 +10,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Auto-property for Messages
         /// </summary>
-        public List<IChatMessage> Messages { get; set; } = new List<IChatMessage>();
+        List<IChatMessage> Messages { get; set; } = new List<IChatMessage>();
         
         /// <summary>
         /// Auto-property for the instance of ChatMessageStorage
@@ -25,6 +26,13 @@ namespace JAC.Service.Core
         {
             
         }
+        #endregion
+        
+        #region eventHandler
+        /// <summary>
+        /// Event for a received message
+        /// </summary>
+        public event EventHandler<IChatMessage> ChatMessageReceived;
         #endregion
         
         #region methods
@@ -44,6 +52,16 @@ namespace JAC.Service.Core
         public void AddMessage(IChatMessage message)
         {
             Messages.Add(message);
+            
+            OnChatMessageReceived(message);
+        }
+        
+        /// <summary>
+        /// Raises the ChatMessageReceived event by invoking it, notifying subscribers about the session closure
+        /// </summary>
+        private void OnChatMessageReceived(IChatMessage chatMessage)
+        {
+            ChatMessageReceived?.Invoke(this, chatMessage);
         }
         #endregion
     }

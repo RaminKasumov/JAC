@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
@@ -24,6 +25,11 @@ namespace JAC.Service.Core
         /// Instance variable for Interface IServiceLogger
         /// </summary>
         readonly IServiceLogger _serviceLogger;
+        
+        /// <summary>
+        /// Instance variable for MessageDispatcher
+        /// </summary>
+        readonly MessageDispatcher _messageDispatcher;
         #endregion
 
         #region constructor
@@ -37,6 +43,8 @@ namespace JAC.Service.Core
             _serverSocket = serverSocket;
             _serviceLogger = serviceLogger;
             _sessions = new List<SessionHandler>();
+
+            _messageDispatcher = new MessageDispatcher(_sessions, _serviceLogger);
         }
         #endregion
 
@@ -89,16 +97,6 @@ namespace JAC.Service.Core
             _sessions.Remove(session);
             
             _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Amount of the clients: {_sessions.Count}");
-        }
-        
-        /// <summary>
-        /// Handles the ChatMessageReceived event by logging the information on the console
-        /// </summary>
-        /// <param name="sender">Triggering Event</param>
-        /// <param name="e">Event arguments</param>
-        private void OnChatMessageReceived(object sender, EventArgs e)
-        {
-            _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A message was received");
         }
         #endregion
     }

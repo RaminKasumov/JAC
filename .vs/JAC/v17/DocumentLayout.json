@@ -121,7 +121,7 @@
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JAC\\JAC\\Views\\MainView.axaml",
               "RelativeToolTip": "JAC\\JAC\\Views\\MainView.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-11T14:32:41.487Z",
+              "WhenOpened": "2024-05-14T14:47:21.737Z",
               "EditorCaption": ""
             },
             {
@@ -133,7 +133,7 @@
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService\\MainWindow.axaml",
               "RelativeToolTip": "JACService\\MainWindow.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-11T14:32:27.603Z",
+              "WhenOpened": "2024-05-14T14:46:54.942Z",
               "EditorCaption": ""
             },
             {
@@ -144,9 +144,9 @@
               "RelativeDocumentMoniker": "JACService.Core\\BroadcastRequestHandler.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\BroadcastRequestHandler.cs",
               "RelativeToolTip": "JACService.Core\\BroadcastRequestHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:48.88Z",
+              "WhenOpened": "2024-05-14T14:46:44.21Z",
               "EditorCaption": ""
             },
             {
@@ -159,7 +159,7 @@
               "RelativeToolTip": "JACService.Core\\ChannelsRequestHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:46.245Z",
+              "WhenOpened": "2024-05-14T14:46:41.518Z",
               "EditorCaption": ""
             },
             {
@@ -172,7 +172,7 @@
               "RelativeToolTip": "JACService.Core\\ChatClient.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:43.808Z",
+              "WhenOpened": "2024-05-14T14:46:38.385Z",
               "EditorCaption": ""
             },
             {
@@ -185,7 +185,7 @@
               "RelativeToolTip": "JACService.Core\\ChatMessage.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:41.647Z",
+              "WhenOpened": "2024-05-14T14:46:35.33Z",
               "EditorCaption": ""
             },
             {
@@ -196,9 +196,9 @@
               "RelativeDocumentMoniker": "JACService.Core\\ChatMessageStorage.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ChatMessageStorage.cs",
               "RelativeToolTip": "JACService.Core\\ChatMessageStorage.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:39.49Z",
+              "WhenOpened": "2024-05-14T14:46:32.862Z",
               "EditorCaption": ""
             },
             {
@@ -211,7 +211,7 @@
               "RelativeToolTip": "JACService.Core\\ChatServiceDirectory.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:36.831Z",
+              "WhenOpened": "2024-05-14T14:46:30.582Z",
               "EditorCaption": ""
             },
             {
@@ -224,7 +224,7 @@
               "RelativeToolTip": "JACService.Core\\ChatUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:33.919Z",
+              "WhenOpened": "2024-05-14T14:46:27.275Z",
               "EditorCaption": ""
             },
             {
@@ -235,9 +235,9 @@
               "RelativeDocumentMoniker": "JACService.Core\\ClientManager.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\ClientManager.cs",
               "RelativeToolTip": "JACService.Core\\ClientManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:31.794Z",
+              "WhenOpened": "2024-05-14T14:46:24.674Z",
               "EditorCaption": ""
             },
             {
@@ -250,7 +250,7 @@
               "RelativeToolTip": "JACService.Core\\FileServiceLogger.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:29.664Z",
+              "WhenOpened": "2024-05-14T14:46:20.878Z",
               "EditorCaption": ""
             },
             {
@@ -263,7 +263,7 @@
               "RelativeToolTip": "JACService.Core\\JoinChannelRequestHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:27.379Z",
+              "WhenOpened": "2024-05-14T14:46:18.454Z",
               "EditorCaption": ""
             },
             {
@@ -276,7 +276,7 @@
               "RelativeToolTip": "JACService.Core\\LoginRequestHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:24.789Z",
+              "WhenOpened": "2024-05-14T14:46:15.875Z",
               "EditorCaption": ""
             },
             {
@@ -287,9 +287,9 @@
               "RelativeDocumentMoniker": "JACService.Core\\MessageDispatcher.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\MessageDispatcher.cs",
               "RelativeToolTip": "JACService.Core\\MessageDispatcher.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:22.248Z",
+              "WhenOpened": "2024-05-14T14:46:12.677Z",
               "EditorCaption": ""
             },
             {
@@ -302,7 +302,7 @@
               "RelativeToolTip": "JACService.Core\\RequestHandlerFactory.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:18.893Z",
+              "WhenOpened": "2024-05-14T14:46:09.983Z",
               "EditorCaption": ""
             },
             {
@@ -315,7 +315,7 @@
               "RelativeToolTip": "JACService.Core\\SessionHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:16.387Z",
+              "WhenOpened": "2024-05-14T14:46:07.745Z",
               "EditorCaption": ""
             },
             {
@@ -328,7 +328,7 @@
               "RelativeToolTip": "JACService.Core\\TcpService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:14.023Z",
+              "WhenOpened": "2024-05-14T14:46:05.374Z",
               "EditorCaption": ""
             },
             {
@@ -341,7 +341,7 @@
               "RelativeToolTip": "JACService.Core\\UsersRequestHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:11.704Z",
+              "WhenOpened": "2024-05-14T14:46:02.624Z",
               "EditorCaption": ""
             },
             {
@@ -352,9 +352,9 @@
               "RelativeDocumentMoniker": "JACService.Core\\WhisperRequestHandler.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\JAC\\JACService.Core\\WhisperRequestHandler.cs",
               "RelativeToolTip": "JACService.Core\\WhisperRequestHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T14:31:09.064Z",
+              "WhenOpened": "2024-05-14T14:45:32.535Z",
               "EditorCaption": ""
             },
             {

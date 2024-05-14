@@ -1,0 +1,105 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:JAC.ViewModels"
+             xmlns:avalonia="https://github.com/projektanker/icons.avalonia"
+             mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="700"
+             x:Class="JAC.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <UserControl.Styles>
+       <Style Selector="Button.b1:pointerover /template/ ContentPresenter">
+          <Setter Property="Padding" Value="15"/>
+          <Setter Property="Foreground" Value="#C0C4C4"/>
+          <Setter Property="Background" Value="Transparent"/>
+       </Style>
+       
+       <Style Selector="Button.b2:pointerover /template/ ContentPresenter">
+          <Setter Property="FontSize" Value="45"/>
+          <Setter Property="Padding" Value="2"/>
+          <Setter Property="Margin" Value="2"/>
+          <Setter Property="BorderThickness" Value="2"/>
+          <Setter Property="BorderBrush" Value="Black"/>
+          <Setter Property="Foreground" Value="White"/>
+          <Setter Property="Background" Value="#272E2E"/>
+       </Style>
+       
+       <Style Selector="Button.b3:pointerover /template/ ContentPresenter">
+          <Setter Property="CornerRadius" Value="40"/>
+          <Setter Property="Height" Value="80"/>
+          <Setter Property="Width" Value="80"/>
+          <Setter Property="BorderBrush" Value="Transparent"/>
+       </Style>
+    </UserControl.Styles>
+   
+    <Grid>
+       <Grid x:Name="Login">
+          <Grid.Background>
+             <SolidColorBrush Color="#11111B"/>
+          </Grid.Background>
+          
+          <Label x:Name="LblChatApp" Content="JAC Chat App" FontSize="80" FontFamily="Georgia" Foreground="White" Background="#050511" BorderBrush="Transparent" Height="130" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+          <Label x:Name="LblLoginDate" CornerRadius="50" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="Black" Background="White" BorderBrush="Black" Margin="0,150,0,0"/>
+          <TextBox x:Name="TbxNickname" CornerRadius="50" FontSize="40" FontFamily="Georgia" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#272E2E" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TbxNickname_OnTextChanged" KeyDown="TbxNickname_OnKeyDown" CaretBrush="White" Padding="30,17,0,0" Margin="0,0,0,110"/>
+          <Label x:Name="LblNicknameTime" FontSize="25" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="480,125,0,200"/>
+          <TextBlock x:Name="TblPlaceHolder" Text="Enter a nickname" FontSize="40" FontFamily="Georgia" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "White" IsHitTestVisible="False" Margin="260,0,0,53"/>
+          <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Georgia" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClearMessage_OnClick" Margin="690,45,0,150"/>
+          <Label x:Name="LblNicknameMissing" FontSize="40" FontFamily="Georgia" Content="Enter a nickname!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,400,0,0"/>
+          <Label x:Name="LblLoginError" FontSize="40" FontFamily="Georgia" Content="User already exists!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,400,0,0"/>
+          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="50" Content="Login" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Georgia" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Click="BtnLogin_OnClick" Margin="0,450,0,0"/>
+       </Grid>
+   
+       <Grid x:Name="ChatApp">
+          <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="350"/>
+             <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <Grid Grid.Column="0">
+             <Grid.Background>
+                <SolidColorBrush Color="#11111B"/>
+             </Grid.Background>
+             
+             <TextBox Foreground="White" Background="#050511" BorderBrush="Black" BorderThickness="0" Height="160" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+             <Label x:Name="LblChat" Content="JAC" FontSize="50" FontFamily="Georgia" Foreground="White" Background="#050511" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0,0,30,0"/>
+             <Label avalonia:Attached.Icon="mdi-chat-plus" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="150,0,0,0"/>
+             <Label avalonia:Attached.Icon="mdi-account-circle" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="20,90,0,0"/>
+             <Label x:Name="LblNickname" Content="Nickname" FontSize="30" FontFamily="Georgia" Height="605" Width="255" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="80,105,0,0"/>
+             <Button avalonia:Attached.Icon="mdi-cog" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0,90,20,0"/>
+             <Label avalonia:Attached.Icon="mdi-account-group" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="25,170,0,0"/>
+             <Label x:Name="LblGlobalChat" Content="Global Chat" FontSize="35" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="45,165,0,0"/>
+             <Label x:Name="LblMembers" Content="5 Members" FontSize="25" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0,215,0,0"/>
+             <Button x:Name="BtnAnonymousChat" Classes="b1" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="2" Height="100" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtnAnonymousChat_OnClick" Margin="0,160,0,0"/>
+          </Grid>
+          
+          <Grid Grid.Column="1">
+             <Grid.Background>
+                <SolidColorBrush Color="#15151F"/>
+             </Grid.Background>
+             
+             <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition/>
+             </Grid.RowDefinitions>
+             
+             <Grid x:Name="ChannelName" Grid.Row="0">
+                <Rectangle Fill="#11111B"/>
+                <Label avalonia:Attached.Icon="mdi-account-group" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="50,0,0,0"/>
+                <Label x:Name="LblChannel" Content="Global Chat" FontSize="50" FontFamily="Georgia" Foreground="White" Background="Transparent" Height="120" Width="950" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="150,0,0,0"/>
+             </Grid>
+             
+             <Grid x:Name="Chat" Grid.Row="1">
+                <Label x:Name="LblRequestDate" CornerRadius="20" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="Black" Background="White" BorderBrush="Black" Margin="0,20,0,200"/>
+                <TextBox x:Name="TbxResponse" CornerRadius="50" FontFamily="Georgia" Height="100" Width="500" FontWeight="Light" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="#11111B" BorderBrush="Black" IsReadOnly="True" Margin="25,85,0,0"/>
+                <Label avalonia:Attached.Icon="mdi-account-circle" FontSize="40" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="40,80,0,0"/>
+                <Label x:Name="LblUser" Content="DemoUser" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="100,104,0,0"/>
+                <Label x:Name="LblResponse" Content="Welcome to the global chat!" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="100,145,0,0"/>
+                <Label x:Name="LblResponseTime" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="445,145,0,0"/>
+                <TextBox x:Name="TbxRequest" CornerRadius="50" FontSize="30" FontFamily="Georgia" Height="80" Width="900" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" Background="#11111B" BorderBrush="Black" TextChanged="TbxRequest_OnTextChanged" KeyDown="TbxRequest_OnKeyDown" CaretBrush="White" Padding="32,22,0,0" Margin="0,0,0,16"/>
+                <TextBlock x:Name="TblPlaceHolderMessage" Text="Enter a message" FontSize="30" FontFamily="Georgia" Height="100" Width="400" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground= "White" Background="Transparent" IsHitTestVisible="False" Margin="0,0,435,-28"/>
+                <Button avalonia:Attached.Icon="mdi-send-circle" x:Name="BtnSendMessage" Classes="b3" CornerRadius="50" FontSize="85" FontFamily="Georgia" Height="85" Width="85" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Black" Background="#0F5348" BorderBrush="Transparent" Click="BtnSendMessage_OnClick" Margin="820,0,0,15"/>
+             </Grid>
+          </Grid>
+       </Grid>
+    </Grid>
+</UserControl>

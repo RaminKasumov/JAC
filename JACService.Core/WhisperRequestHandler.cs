@@ -1,5 +1,4 @@
-﻿using System;
-using JACService.Core.Contracts;
+﻿using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
@@ -33,8 +32,7 @@ namespace JAC.Service.Core
                 _message = splitter[splitter.Length - 1];
             }
             
-            IUser user = LoginRequestHandler.ChatUser;
-            Publish(user);
+            Publish(LoginRequestHandler.ChatUser);
 
             return "ok";
         }
@@ -46,8 +44,8 @@ namespace JAC.Service.Core
         private void Publish(IUser sender)
         {
             IChatMessage chatMessage = new ChatMessage(_receiver, sender.Nickname, _message, true);
-            MessageDispatcher dispatcher = new MessageDispatcher(chatMessage);
-            dispatcher.Whisper();
+            ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
+            chatMessageStorage.AddMessage(chatMessage);
         }
         #endregion
     }

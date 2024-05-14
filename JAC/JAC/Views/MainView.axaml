@@ -35,18 +35,18 @@
     <Grid>
        <Grid x:Name="Login">
           <Grid.Background>
-             <SolidColorBrush Color="#1B1F1F"/>
+             <SolidColorBrush Color="#11111B"/>
           </Grid.Background>
           
-          <TextBox Text="JAC Chat App" FontSize="80" FontFamily="Georgia" TextAlignment="Center" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Height="130" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
-          <Label x:Name="LblLoginDate" CornerRadius="20" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="Black" Background="White" BorderBrush="Black" Margin="0,150,0,0"/>
-          <TextBox x:Name="TbxNickname" CornerRadius="50" FontSize="40" FontFamily="Georgia" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#01101F" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TbxNickname_OnTextChanged" KeyDown="TbxNickname_OnKeyDown" CaretBrush="White" Padding="30,17,0,0" Margin="0,0,0,110"/>
+          <Label x:Name="LblChatApp" Content="JAC Chat App" FontSize="80" FontFamily="Georgia" Foreground="White" Background="#050511" BorderBrush="Transparent" Height="130" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+          <Label x:Name="LblLoginDate" CornerRadius="50" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" FontWeight="Light" Foreground="Black" Background="White" BorderBrush="Black" Margin="0,150,0,0"/>
+          <TextBox x:Name="TbxNickname" CornerRadius="50" FontSize="40" FontFamily="Georgia" Height="80" Width="600" FontWeight="Light" Foreground="White" Background="#272E2E" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TbxNickname_OnTextChanged" KeyDown="TbxNickname_OnKeyDown" CaretBrush="White" Padding="30,17,0,0" Margin="0,0,0,110"/>
           <Label x:Name="LblNicknameTime" FontSize="25" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="480,125,0,200"/>
           <TextBlock x:Name="TblPlaceHolder" Text="Enter a nickname" FontSize="40" FontFamily="Georgia" Height="100" Width="800" FontWeight="ExtraLight" Foreground= "White" IsHitTestVisible="False" Margin="260,0,0,53"/>
-          <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Georgia" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClearMessage_OnClick" Margin="690,45,0,150"/>
+          <Button x:Name="BtnClear" Classes="b1" Content="X" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="35" FontFamily="Georgia" Height="80" Width="85" Foreground="#C0C4C4" Background="Transparent" BorderThickness="0" Click="BtnClearMessage_OnClick" Margin="690,45,0,150"/>
           <Label x:Name="LblNicknameMissing" FontSize="40" FontFamily="Georgia" Content="Enter a nickname!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,400,0,0"/>
           <Label x:Name="LblLoginError" FontSize="40" FontFamily="Georgia" Content="User already exists!!!" HorizontalAlignment="Center" Foreground="#D83F5D" Background="Transparent" IsVisible="False" Margin="0,400,0,0"/>
-          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="20" Content="Login" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Georgia" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Click="BtnLogin_OnClick" Margin="0,450,0,0"/>
+          <Button x:Name="BtnLogin" Classes="b2" CornerRadius="50" Content="Login" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45" FontFamily="Georgia" Height="110" Width="280" Foreground="White" Background="#272E2E" BorderBrush="Transparent" Click="BtnLogin_OnClick" Margin="0,450,0,0"/>
        </Grid>
    
        <Grid x:Name="ChatApp">
@@ -60,16 +60,16 @@
                 <SolidColorBrush Color="#11111B"/>
              </Grid.Background>
              
-             <TextBox Foreground="White" Background="#050511" BorderBrush="Black" Height="160" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+             <TextBox Foreground="White" Background="#050511" BorderBrush="Black" BorderThickness="0" Height="160" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
              <Label x:Name="LblChat" Content="JAC" FontSize="50" FontFamily="Georgia" Foreground="White" Background="#050511" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0,0,30,0"/>
              <Label avalonia:Attached.Icon="mdi-chat-plus" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="150,0,0,0"/>
              <Label avalonia:Attached.Icon="mdi-account-circle" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="20,90,0,0"/>
              <Label x:Name="LblNickname" Content="Nickname" FontSize="30" FontFamily="Georgia" Height="605" Width="255" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="80,105,0,0"/>
-             <Button avalonia:Attached.Icon="mdi-cog" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="0,90,20,0"/>
+             <Button avalonia:Attached.Icon="mdi-cog" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0,90,20,0"/>
              <Label avalonia:Attached.Icon="mdi-account-group" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" Margin="25,170,0,0"/>
-             <Button x:Name="BtnAnonymousChat" Classes="b1" Foreground="White" Background="Transparent" BorderBrush="Transparent" Height="100" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtnAnonymousChat_OnClick" Margin="0,160,0,0"/>
              <Label x:Name="LblGlobalChat" Content="Global Chat" FontSize="35" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="45,165,0,0"/>
              <Label x:Name="LblMembers" Content="5 Members" FontSize="25" FontFamily="Georgia" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Margin="0,215,0,0"/>
+             <Button x:Name="BtnAnonymousChat" Classes="b1" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="2" Height="100" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtnAnonymousChat_OnClick" Margin="0,160,0,0"/>
           </Grid>
           
           <Grid Grid.Column="1">
@@ -95,7 +95,7 @@
                 <Label x:Name="LblUser" Content="DemoUser" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="100,104,0,0"/>
                 <Label x:Name="LblResponse" Content="Welcome to the global chat!" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="100,145,0,0"/>
                 <Label x:Name="LblResponseTime" FontSize="20" FontFamily="Georgia" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Background="Transparent" Margin="445,145,0,0"/>
-                <TextBox x:Name="TbxRequest" CornerRadius="50" FontSize="30" FontFamily="Georgia" Height="80" Width="900" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" Background="#11111B" BorderBrush="Black" TextChanged="TbxRequest_OnTextChanged" KeyDown="TbxRequest_OnKeyDown" CaretBrush="White" Padding="30,20,0,0" Margin="0,0,0,16"/>
+                <TextBox x:Name="TbxRequest" CornerRadius="50" FontSize="30" FontFamily="Georgia" Height="80" Width="900" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" Background="#11111B" BorderBrush="Black" TextChanged="TbxRequest_OnTextChanged" KeyDown="TbxRequest_OnKeyDown" CaretBrush="White" Padding="32,22,0,0" Margin="0,0,0,16"/>
                 <TextBlock x:Name="TblPlaceHolderMessage" Text="Enter a message" FontSize="30" FontFamily="Georgia" Height="100" Width="400" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground= "White" Background="Transparent" IsHitTestVisible="False" Margin="0,0,435,-28"/>
                 <Button avalonia:Attached.Icon="mdi-send-circle" x:Name="BtnSendMessage" Classes="b3" CornerRadius="50" FontSize="85" FontFamily="Georgia" Height="85" Width="85" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Black" Background="#0F5348" BorderBrush="Transparent" Click="BtnSendMessage_OnClick" Margin="820,0,0,15"/>
              </Grid>

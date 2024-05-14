@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JAC.Shared;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -9,78 +8,69 @@ namespace JAC.Service.Core
     {
         #region instancevariables
         /// <summary>
-        /// Instance variable for ChatMessage
+        /// Instance variable for List of Sessions
         /// </summary>
-        readonly IChatMessage _message;
+        readonly List<SessionHandler> _sessions;
         
         /// <summary>
-        /// Instance variable for ChatServiceDirectory
+        /// Instance variable for Interface IServiceLogger
         /// </summary>
-        readonly ChatServiceDirectory _chatServiceDirectory;
-        
-        /// <summary>
-        /// Instance variable for ChatMessageStorage
-        /// </summary>
-        readonly ChatMessageStorage _chatMessageStorage;
+        readonly IServiceLogger _serviceLogger;
         #endregion
         
         #region constructor
-        public MessageDispatcher(IChatMessage message)
-        {
-            _message = message;
-            _chatServiceDirectory = ChatServiceDirectory.GetInstance();
-            _chatMessageStorage = ChatMessageStorage.GetInstance();
-        }
-        #endregion
-        
-        #region eventHandler
         /// <summary>
-        /// Event for ChatMessageReceived
+        /// Instance variables are being initialized
         /// </summary>
-        public event EventHandler ChatMessageReceived;
+        /// <param name="sessions">List of sessions</param>
+        /// <param name="serviceLogger">ServiceLogger</param>
+        public MessageDispatcher(List<SessionHandler> sessions, IServiceLogger serviceLogger)
+        {
+            _sessions = sessions;
+            _serviceLogger = serviceLogger;
+            
+            //Register OnChatMessageReceived method for ChatMessageReceived event
+            ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
+            chatMessageStorage.ChatMessageReceived += OnChatMessageReceived;
+        }
         #endregion
         
         #region methods
         /// <summary>
         /// Broadcasts a message to all users
         /// </summary>
-        public void Broadcast()
+        private void Broadcast(IChatMessage chatMessage)
         {
-            List<string> channels = (List<string>)_chatServiceDirectory.GetChannelNames();
-
-            foreach (string channel in channels)
-            {
-                List<string> users = (List<string>)_chatServiceDirectory.GetUsersByChannel(channel);
-                foreach (string user in users)
-                {
-                    _chatMessageStorage.AddMessage(_message);
-                }
-            }
-
-            OnChatMessageReceived();
+            _sessions.FindAll(session => session.ChatUser.CurrentChannel == chatMessage.Recipient)
+                .ForEach(session => session.SendText(chatMessage.ToString()));
         }
         
         /// <summary>
         /// Sends a message to a specific user
         /// </summary>
-        public void Whisper()
+        private void Whisper(IChatMessage chatMessage)
         {
-            IUser user = _chatServiceDirectory.FindUser(_message.Recipient);
-
-            if (user != null)
-            {
-                _chatMessageStorage.AddMessage(_message);
-            }
-
-            OnChatMessageReceived();
+            _sessions.FindAll(session => session.ChatUser.Nickname == chatMessage.Recipient)
+                .ForEach(session => session.SendText(chatMessage.ToString()));
         }
         
         /// <summary>
-        /// Raises the ChatMessageReceived event
+        /// Handles the ChatMessageReceived event by logging the information on the console
         /// </summary>
-        private void OnChatMessageReceived()
+        /// <param name="sender">Triggering Event</param>
+        /// <param name="e">Event arguments</param>
+        private void OnChatMessageReceived(object sender, IChatMessage e)
         {
-            ChatMessageReceived?.Invoke(this, EventArgs.Empty);
+            if (e.IsPrivate)
+            {
+                Whisper(e);
+            }
+            else
+            {
+                Broadcast(e);
+            }
+            
+            _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A message was received");
         }
         #endregion
     }
