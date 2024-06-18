@@ -1,6 +1,6 @@
 ﻿using JACService.Core.Contracts;
 
-namespace JAC.Service.Core
+namespace JAC.Shared
 {
     public class ChatUser : IUser
     {
@@ -23,14 +23,6 @@ namespace JAC.Service.Core
         
         #region constructors
         /// <summary>
-        /// Constructor if no Nickname is given
-        /// </summary>
-        public ChatUser()
-        {
-            IsLoggedIn = false;
-        }
-        
-        /// <summary>
         /// Constructor if a Nickname is given
         /// </summary>
         /// <param name="nickname">Nickname of User</param>
@@ -38,7 +30,14 @@ namespace JAC.Service.Core
         {
             Nickname = nickname;
             CurrentChannel = "anonymous";
-            IsLoggedIn = true;
+        }
+        
+        /// <summary>
+        /// Constructor if no Nickname is given
+        /// </summary>
+        public ChatUser()
+        {
+            IsLoggedIn = false;
         }
         #endregion
         
@@ -57,6 +56,26 @@ namespace JAC.Service.Core
         public void Logout()
         {
             IsLoggedIn = false;
+        }
+        
+        /// <summary>
+        /// Converts a string to a ChatUser object
+        /// </summary>
+        /// <param name="user">User</param>
+        /// <returns>User with the current Channel</returns>
+        public static ChatUser FromString(string user)
+        {
+            string[] parts = user.Split('|');
+            return new ChatUser(parts[0]) { CurrentChannel = parts[1] };
+        }
+        
+        /// <summary>
+        /// Converts a ChatUser object to a string representation
+        /// </summary>
+        /// <returns>A string that represents the current ChatUser object</returns>
+        public override string ToString()
+        {
+            return $"{Nickname}|{CurrentChannel}";
         }
         #endregion
     }

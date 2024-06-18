@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JACService.Core.Contracts
+﻿namespace JAC.Shared
 {
     public interface IChatMessage
     {
@@ -23,7 +21,7 @@ namespace JACService.Core.Contracts
         /// <summary>
         /// TimeStamp of the message
         /// </summary>
-        DateTime TimeStamp { get; set; }
+        string TimeStamp { get; set; }
         
         /// <summary>
         /// Is the message private or not

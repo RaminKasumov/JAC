@@ -1,8 +1,7 @@
-﻿using System;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using JAC.Shared;
 
-namespace JAC.Service.Core
+namespace JAC
 {
     public class ChatClient
     {
@@ -47,7 +46,7 @@ namespace JAC.Service.Core
         }
         #endregion
         
-        #region method
+        #region methods
         /// <summary>
         /// Returns the instance of ChatClient
         /// </summary>

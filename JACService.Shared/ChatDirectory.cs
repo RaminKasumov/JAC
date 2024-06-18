@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using JACService.Core.Contracts;
 
-namespace JAC.Service.Core
+namespace JAC.Shared
 {
-    public class ChatServiceDirectory
+    public class ChatDirectory
     {
         #region instancevariables
         /// <summary>
@@ -21,16 +21,16 @@ namespace JAC.Service.Core
         /// <summary>
         /// Property for the instance of ChatServiceDirectory
         /// </summary>
-        static ChatServiceDirectory Instance { get; } = new ChatServiceDirectory();
+        static ChatDirectory Instance { get; } = new ChatDirectory();
         #endregion
 
         #region constructor
         /// <summary>
         /// Constructor is private to prevent the creation of an instance of ChatServiceDirectory
         /// </summary>
-        private ChatServiceDirectory()
+        private ChatDirectory()
         {
-            
+            AddChannel("anonymous");
         }
         #endregion
         
@@ -39,7 +39,7 @@ namespace JAC.Service.Core
         /// Returns the instance of ChatServiceDirectory
         /// </summary>
         /// <returns>Returns the existing instance</returns>
-        public static ChatServiceDirectory GetInstance()
+        public static ChatDirectory GetInstance()
         {
             return Instance;
         }

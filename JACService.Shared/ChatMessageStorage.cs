@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using JACService.Core.Contracts;
 
-namespace JAC.Service.Core
+namespace JAC.Shared
 {
     public class ChatMessageStorage
     {
@@ -32,7 +31,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Event for a received message
         /// </summary>
-        public event EventHandler<IChatMessage> ChatMessageReceived;
+        public event EventHandler<ChatMessageReceivedEventArgs> ChatMessageReceived;
         #endregion
         
         #region methods
@@ -59,9 +58,10 @@ namespace JAC.Service.Core
         /// <summary>
         /// Raises the ChatMessageReceived event by invoking it, notifying subscribers about the session closure
         /// </summary>
+        /// <param name="chatMessage">Message</param>
         private void OnChatMessageReceived(IChatMessage chatMessage)
         {
-            ChatMessageReceived?.Invoke(this, chatMessage);
+            ChatMessageReceived?.Invoke(this, new ChatMessageReceivedEventArgs(chatMessage));
         }
         #endregion
     }
