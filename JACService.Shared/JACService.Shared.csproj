@@ -114,12 +114,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel.cs" />
     <Compile Include="ChatDirectory.cs" />
     <Compile Include="ChatMessage.cs" />
     <Compile Include="ChatMessageReceivedEventArgs.cs" />
     <Compile Include="ChatMessageStorage.cs" />
     <Compile Include="ChatUser.cs" />
+    <Compile Include="IChannel.cs" />
     <Compile Include="IChatMessage.cs" />
+    <Compile Include="IUser.cs" />
     <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="MessageReceiver.cs" />
     <Compile Include="SocketReader.cs" />

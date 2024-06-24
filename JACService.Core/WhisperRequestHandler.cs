@@ -9,7 +9,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Receiver of the message
         /// </summary>
-        string _receiver = "";
+        IChannel _receiverChannel;
         
         /// <summary>
         /// Message of the Client
@@ -43,15 +43,26 @@ namespace JAC.Service.Core
         {
             string[] splitter = command.Split(' ');
 
-            if (splitter.Length == 3)
+            if (splitter.Length >= 3)
             {
-                _receiver = splitter[1].Trim();
-                _message = splitter[splitter.Length - 1];
+                _receiverChannel = new Channel(splitter[1].Trim());
             }
             
-            Publish(_session.ChatUser);
+            ChatDirectory chatDirectory = ChatDirectory.GetInstance();
 
-            return "ok";
+            if (chatDirectory.FindChannel(_receiverChannel) != null)
+            {
+                string[] splitAtPipe = command.Split('|');
+                _message = command.Substring(splitAtPipe[0].Length).Trim();
+            
+                Publish(_session.ChatUser);
+                
+                return "ok";
+            }
+            else
+            {
+                return "Error: Channel does not exist!";
+            }
         }
 
         /// <summary>
@@ -60,7 +71,7 @@ namespace JAC.Service.Core
         /// <param name="sender">Sender of the message</param>
         private void Publish(IUser sender)
         {
-            IChatMessage chatMessage = new ChatMessage(_receiver, sender.Nickname, _message, true);
+            IChatMessage chatMessage = new ChatMessage(_receiverChannel.Name, sender.Nickname, _message, true);
             ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
             chatMessageStorage.AddMessage(chatMessage);
         }

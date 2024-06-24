@@ -5,8 +5,8 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
+using JAC.Service.Core;
 using JAC.Shared;
-using JACService.Core.Contracts;
 
 namespace JAC.Views;
 
@@ -17,9 +17,15 @@ public partial class MainView : UserControl
     
     readonly SocketWriter _writer;
 
+    ChatUser _chatUser;
+
     readonly ChatMessageStorage _chatMessageStorage;
     
     readonly MessageReceiver _messageReceiver;
+    
+    string _maskedPassword = "";
+    
+    bool _isEditingPassword;
     #endregion
 
     #region constructor
@@ -28,6 +34,7 @@ public partial class MainView : UserControl
         InitializeComponent();
         
         Login.IsVisible = true;
+        BrdSettings.IsVisible = false;
         ChatApp.IsVisible = false;
         ChannelName.IsVisible = false;
         Chat.IsVisible = false;
@@ -36,6 +43,9 @@ public partial class MainView : UserControl
         ChatClient chatClient = ChatClient.GetInstance();
         _clientSocket = chatClient.ClientSocket;
         _writer = chatClient.Writer;
+        
+        _chatUser = new ChatUser();
+        
         _chatMessageStorage = ChatMessageStorage.GetInstance();
         
         _messageReceiver = new MessageReceiver(_clientSocket);
@@ -43,13 +53,45 @@ public partial class MainView : UserControl
         
         LblLoginDate.Content = DateTime.Today.Date.ToString("dd.MM.yyyy");
         LblRequestDate.Content = DateTime.Today.Date.ToString("dd.MM.yyyy");
+
+        _isEditingPassword = false;
     }
     #endregion
 
     #region methods
     private void TbxNickname_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        TblPlaceHolder.IsVisible = string.IsNullOrEmpty(TbxNickname.Text);
+        TblPlaceHolderNickname.IsVisible = string.IsNullOrEmpty(TbxNickname.Text);
+    }
+    
+    private void TbxPassword_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        TblPlaceHolderPassword.IsVisible = string.IsNullOrEmpty(TbxPassword.Text);
+        
+        if (_isEditingPassword)
+        {
+            if (!string.IsNullOrEmpty(TbxPassword.Text))
+            {
+                _maskedPassword = TbxPassword.Text;
+            }
+        }
+        else
+        {
+            TextBox password = (TextBox)sender;
+
+            if (!string.IsNullOrEmpty(password.Text) && password.Text.Length > _maskedPassword.Length)
+            {
+                _maskedPassword += password.Text[^1];
+                password.Text = new string('*', _maskedPassword.Length);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(password.Text))
+                {
+                    _maskedPassword = _maskedPassword.Substring(0, password.Text.Length);
+                }
+            }
+        }
     }
     
     private void TbxRequest_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -74,6 +116,14 @@ public partial class MainView : UserControl
         }
     }
     
+    private void TbxPassword_OnKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            BtnLogin_OnClick(sender, e);
+        }
+    }
+    
     private void TbxRequest_OnKeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter)
@@ -81,22 +131,39 @@ public partial class MainView : UserControl
             BtnSendMessage_OnClick(sender, e);
         }
     }
-
-    private void BtnClearMessage_OnClick(object sender, RoutedEventArgs e)
+    
+    private void BtnShowPassword_OnClick(object sender, RoutedEventArgs e)
     {
-        TbxNickname.Text = "";
-        TbxNickname.Focus();
-        TblPlaceHolder.IsVisible = true;
+        if (!string.IsNullOrEmpty(TbxPassword.Text))
+        {
+            TbxPassword.Text = _maskedPassword;
+            _isEditingPassword = true;
+        
+            BtnShowPassword.IsVisible = false;
+            BtnHidePassword.IsVisible = true;
+        }
+    }
+
+    private void BtnHidePassword_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(TbxPassword.Text))
+        {
+            TbxPassword.Text = new string('*', _maskedPassword.Length);
+            _isEditingPassword = false;
+        
+            BtnShowPassword.IsVisible = true;
+            BtnHidePassword.IsVisible = false;
+        }
     }
 
     private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
     {
-        LblNicknameMissing.IsVisible = false;
+        LblInputMissing.IsVisible = false;
         LblLoginError.IsVisible = false;
 
-        if (!string.IsNullOrEmpty(TbxNickname.Text))
+        if (!string.IsNullOrEmpty(TbxNickname.Text) && !string.IsNullOrEmpty(_maskedPassword))
         {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 4711);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(TcpService.Ip), TcpService.Port);
 
             if (!_clientSocket.Connected)
             {
@@ -104,16 +171,55 @@ public partial class MainView : UserControl
                 _messageReceiver.Start();
             }
 
-            _writer.SendText($"/login {TbxNickname.Text}");
+            _writer.SendText($"/login {TbxNickname.Text.Trim()} {_maskedPassword}");
+
             TbxNickname.Text = "";
+            TbxPassword.Text = "";
         }
         else
         {
-            LblNicknameMissing.IsVisible = true;
+            LblInputMissing.IsVisible = true;
+        }
+    }
+    
+    private void BtnSettings_OnClick(object sender, RoutedEventArgs e)
+    {
+        BrdSettings.IsVisible = true;
+        
+        TbxName.Text = _chatUser.Nickname;
+        TbxPasscode.Text = _chatUser.Password;
+    }
+    
+    private void TbxName_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(TbxName.Text))
+        {
+            TblPlaceHolderName.IsVisible = false;
+        }
+        else
+        {
+            TblPlaceHolderName.IsVisible = true;
         }
     }
 
-    private void BtnAnonymousChat_OnClick(object sender, RoutedEventArgs e)
+    private void TbxPasscode_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(TbxPasscode.Text))
+        {
+            TblPlaceHolderPasscode.IsVisible = false;
+        }
+        else
+        {
+            TblPlaceHolderPasscode.IsVisible = true;
+        }
+    }
+    
+    private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+    {
+        BrdSettings.IsVisible = false;
+    }
+
+    private void BtnChat_OnClick(object sender, RoutedEventArgs e)
     {
         ChannelName.IsVisible = true;
         Chat.IsVisible = true;
@@ -129,13 +235,13 @@ public partial class MainView : UserControl
             
             if (chatDirectory.FindChannel(user.CurrentChannel) != null)
             {
-                _writer.SendText($"/broadcast {user.CurrentChannel} |{TbxRequest.Text}");
+                _writer.SendText($"/broadcast {user.CurrentChannel.Name} |{TbxRequest.Text.Trim()}");
             }
             else
             {
                 if (chatDirectory.FindUser(user.Nickname) != null)
                 {
-                    _writer.SendText($"/whisper {user.Nickname} |{TbxRequest.Text}");
+                    _writer.SendText($"/whisper {user.Nickname} |{TbxRequest.Text.Trim()}");
                 }
             }
             
@@ -147,36 +253,34 @@ public partial class MainView : UserControl
     {
         if (message.StartsWith("Error"))
         {
-            string errorMessage = message.Split(' ')[1];
-            LblLoginError.Content = errorMessage;
             LblLoginError.IsVisible = true;
+            
+            TbxNickname.Text = "";
+            TbxPassword.Text = "";
         }
         else if (message.StartsWith("Login-success"))
         {
             string[] splitter = message.Split(' ');
             string user = message.Substring(splitter[0].Length);
-            ChatUser chatUser = ChatUser.FromString(user);
+            _chatUser = ChatUser.FromString(user);
             
             ChatDirectory chatDirectory = ChatDirectory.GetInstance();
-            chatDirectory.AddUser(chatUser);
-            chatDirectory.AddChannel(chatUser.CurrentChannel);
+            chatDirectory.AddUser(_chatUser);
+            chatDirectory.AddChannel(_chatUser.CurrentChannel);
             
             Login.IsVisible = false;
             ChatApp.IsVisible = true;
-            LblNickname.Content = chatUser.Nickname;
+            
+            LblNickname.Content = _chatUser.Nickname;
         }
         else if (message.StartsWith("MessageReceived"))
         {
             string[] splitter = message.Split(' ');
-            string messageString = message.Substring(splitter[0].Length);
+            string messageString = message.Substring(splitter[0].Length).Trim();
             
             IChatMessage chatMessage = ChatMessage.FromString(messageString);
             _chatMessageStorage.AddMessage(chatMessage);
             AddMessage(chatMessage);
-        }
-        else
-        {
-            LblLoginError.IsVisible = true;
         }
     }
     

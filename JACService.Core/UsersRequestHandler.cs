@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using JAC.Shared;
 using JACService.Core.Contracts;
 
@@ -18,7 +17,7 @@ namespace JAC.Service.Core
         {
             string result = "";
             string[] splitter = command.Split(' ');
-            string channel = command.Substring(splitter[0].Length).Trim();
+            Channel channel = new Channel(command.Substring(splitter[0].Length).Trim());
             
             ChatDirectory instance = ChatDirectory.GetInstance();
             List<string> users = (List<string>)instance.GetUsersByChannel(channel);

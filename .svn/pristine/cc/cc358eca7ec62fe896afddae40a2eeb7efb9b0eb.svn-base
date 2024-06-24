@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace JAC.Shared
+{
+    public class Channel : IChannel
+    {
+        #region properties
+        /// <summary>
+        /// Auto-property for ID of the Channel
+        /// </summary>
+        public int Id { get; set; }
+        
+        /// <summary>
+        /// Auto-property for Name of the Channel
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// Auto-property for Users in the Channel
+        /// </summary>
+        public List<IUser> Users { get; set; }
+        
+        /// <summary>
+        /// Auto-property for the amount of Users in the Channel
+        /// </summary>
+        public int UsersCount { get; set; }
+
+        /// <summary>
+        /// Auto-property for Messages in the Channel
+        /// </summary>
+        public List<IChatMessage> Messages { get; set; }
+        
+        /// <summary>
+        /// Auto-property to find out if the Channel is private or not
+        /// </summary>
+        public bool IsPrivate { get; set; }
+        #endregion
+        
+        #region constructor
+        /// <summary>
+        /// Constructor for the Channel
+        /// </summary>
+        /// <param name="name">Name of the Channel</param>
+        public Channel(string name)
+        {
+            Random random = new Random();
+            Id = random.Next(int.MaxValue);
+            Name = name;
+            Users = new List<IUser>();
+            UsersCount = Users.Count;
+            Messages = new List<IChatMessage>();
+            IsPrivate = true;
+        }
+
+        /// <summary>
+        /// Constructor for the Channel
+        /// </summary>
+        public Channel() : this("Anonymous")
+        {
+            
+        }
+        #endregion
+        
+        #region methods
+        /// <summary>
+        /// Adds a new User to the Channel
+        /// </summary>
+        /// <param name="user">User</param>
+        public void AddUser(IUser user)
+        {
+            if (!Users.Contains(user))
+            {
+                Users.Add(user);
+            }
+        }
+        
+        /// <summary>
+        /// Removes a User from the Channel
+        /// </summary>
+        /// <param name="user">User</param>
+        public void RemoveUser(IUser user)
+        {
+            if (Users.Contains(user))
+            {
+                Users.Remove(user);
+            }
+        }
+        
+        /// <summary>
+        /// Adds a new Message to the Channel
+        /// </summary>
+        /// <param name="message">Message</param>
+        public void AddMessage(IChatMessage message)
+        {
+            Messages.Add(message);
+        }
+        
+        /// <summary>
+        /// Removes a Message from the Channel
+        /// </summary>
+        /// <param name="message">Message</param>
+        public void RemoveMessage(IChatMessage message)
+        {
+            Messages.Remove(message);
+        }
+        
+        /// <summary>
+        /// Checks if the Channel is private or not
+        /// </summary>
+        public void CheckIfPrivate()
+        {
+            if (Users.Count > 2)
+            {
+                IsPrivate = false;
+            }
+        }
+        #endregion
+    }
+}

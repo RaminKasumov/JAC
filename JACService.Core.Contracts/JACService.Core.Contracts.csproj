@@ -116,7 +116,6 @@
   <ItemGroup>
     <Compile Include="IServiceLogger.cs" />
     <Compile Include="ITextRequest.cs" />
-    <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

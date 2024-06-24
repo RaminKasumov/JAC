@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using JACService.Core.Contracts;
 
@@ -6,11 +8,16 @@ namespace JAC.Service.Core
 {
     public class FileServiceLogger : IServiceLogger
     {
-        #region instancevariable
+        #region instancevariables
         /// <summary>
         /// Instance variable for original color of console
         /// </summary>
         readonly ConsoleColor _originalColor = Console.ForegroundColor;
+        
+        /// <summary>
+        /// Instance variable for Messages
+        /// </summary>
+        readonly List<LogMessage> _logMessages = new List<LogMessage>();
         #endregion
         
         #region constant
@@ -18,6 +25,13 @@ namespace JAC.Service.Core
         /// Constant for filepath
         /// </summary>
         const string Filepath = @"ServiceInformation.txt";
+        #endregion
+        
+        #region eventHandler
+        /// <summary>
+        /// Event to log the Messages
+        /// </summary>
+        public event EventHandler LogUpdated;
         #endregion
 
         #region methods
@@ -27,7 +41,11 @@ namespace JAC.Service.Core
         /// <param name="message">Service Information</param>
         public void LogServiceInfo(string message)
         {
-            LogMessageWithColor(message, ConsoleColor.Red);
+            LogMessage msg = new LogMessage(message, Color.Red);
+            _logMessages.Add(msg);
+            OnLogUpdated(EventArgs.Empty);
+            
+            LogMessageWithColor(msg);
         }
 
         /// <summary>
@@ -36,7 +54,11 @@ namespace JAC.Service.Core
         /// <param name="message">Service Information</param>
         public void LogRequestInfo(string message)
         {
-            LogMessageWithColor(message, ConsoleColor.Gray);
+            LogMessage msg = new LogMessage(message, Color.Gray);
+            _logMessages.Add(msg);
+            OnLogUpdated(EventArgs.Empty);
+            
+            LogMessageWithColor(msg);
         }
         
         /// <summary>
@@ -45,7 +67,11 @@ namespace JAC.Service.Core
         /// <param name="message">Broadcast Message</param>
         public void LogBroadcastMessage(string message)
         {
-            LogMessageWithColor(message, ConsoleColor.Green);
+            LogMessage msg = new LogMessage(message, Color.Green);
+            _logMessages.Add(msg);
+            OnLogUpdated(EventArgs.Empty);
+            
+            LogMessageWithColor(msg);
         }
         
         /// <summary>
@@ -54,28 +80,63 @@ namespace JAC.Service.Core
         /// <param name="message">Whisper Message</param>
         public void LogWhisperMessage(string message)
         {
-            LogMessageWithColor(message, ConsoleColor.Yellow);
+            LogMessage msg = new LogMessage(message, Color.Yellow);
+            _logMessages.Add(msg);
+            OnLogUpdated(EventArgs.Empty);
+            
+            LogMessageWithColor(msg);
         }
 
         /// <summary>
         /// Shows information or requests on the console and writes it to a file
         /// </summary>
         /// <param name="message">Service Information</param>
-        /// <param name="color">Color</param>
-        private void LogMessageWithColor(string message, ConsoleColor color)
+        private void LogMessageWithColor(LogMessage message)
         {
-            Console.ForegroundColor = color;
+            Console.ForegroundColor = ConvertColorToConsoleColor(message.Color);
             Console.WriteLine(message);
             Console.ForegroundColor = _originalColor;
 
             try
             {
-                File.AppendAllText(Filepath, message + Environment.NewLine);
+                File.AppendAllText(Filepath, message.Message + Environment.NewLine);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"Error occured: {ex.Message}");
+                Console.WriteLine($"Error occured: {e.Message}");
             }
+        }
+        
+        /// <summary>
+        /// Converts a color to a ConsoleColor
+        /// </summary>
+        /// <param name="color">Color</param>
+        /// <returns>Returns a color converted into a ConsoleColor</returns>
+        private ConsoleColor ConvertColorToConsoleColor(Color color)
+        {
+            int index = (color.R > 128 | color.G > 128 | color.B > 128) ? 8 : 0;
+            index |= (color.R > 64) ? 4 : 0;
+            index |= (color.G > 64) ? 2 : 0;
+            index |= (color.B > 64) ? 1 : 0;
+            return (ConsoleColor)index;
+        }
+        
+        /// <summary>
+        /// OnLogUpdated is a method that triggers the LogUpdated event
+        /// </summary>
+        /// <param name="e">Event arguments</param>
+        private void OnLogUpdated(EventArgs e)
+        {
+            LogUpdated?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// GetLogMessages is a method that returns the list of log messages
+        /// </summary>
+        /// <returns>List of LogMessage objects</returns>
+        public List<LogMessage> GetLogMessages()
+        {
+            return _logMessages;
         }
         #endregion
     }

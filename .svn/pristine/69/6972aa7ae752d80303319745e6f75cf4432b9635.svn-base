@@ -1,0 +1,81 @@
+﻿using System;
+using JAC.Shared;
+using JACService.Core.Contracts;
+
+namespace JAC.Service.Core
+{
+    public class BroadcastRequestHandler : ITextRequest
+    {
+        #region instancevariables
+        /// <summary>
+        /// Instance variable for Channel
+        /// </summary>
+        IChannel _groupChannel;
+        
+        /// <summary>
+        /// Instance variable for Message
+        /// </summary>
+        string _message = "";
+        
+        /// <summary>
+        /// Instance variable for SessionHandler
+        /// </summary>
+        readonly SessionHandler _session;
+        #endregion
+
+        #region constructor
+        /// <summary>
+        /// ´Instance variables are being initialized
+        /// </summary>
+        /// <param name="session">Session</param>
+        public BroadcastRequestHandler(SessionHandler session)
+        {
+            _session = session;
+        }
+        #endregion
+        
+        #region methods
+        /// <summary>
+        /// Command of Client is being processed
+        /// </summary>
+        /// <param name="command">Command of Client</param>
+        /// <returns>Returns a response to Client</returns>
+        public string GetResponse(string command)
+        {
+            string[] splitter = command.Split(' ');
+
+            if (splitter.Length >= 3)
+            {
+                _groupChannel = new Channel(splitter[1].Trim());
+            }
+            
+            ChatDirectory chatDirectory = ChatDirectory.GetInstance();
+
+            if (chatDirectory.FindChannel(_groupChannel) != null)
+            {
+                string[] splitAtPipe = command.Split('|');
+                _message = command.Substring(splitAtPipe[0].Length).Trim();
+            
+                Publish(_session.ChatUser);
+                
+                return "ok";
+            }
+            else
+            {
+                return "Error: Channel does not exist!";
+            }
+        }
+        
+        /// <summary>
+        /// Checks if the command is request or message broadcast
+        /// </summary>
+        /// <param name="sender">Sender of the message</param>
+        private void Publish(IUser sender)
+        {
+            IChatMessage chatMessage = new ChatMessage(_groupChannel.Name, sender.Nickname, _message, false);
+            ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
+            chatMessageStorage.AddMessage(chatMessage);
+        }
+        #endregion
+    }
+}

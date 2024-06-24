@@ -1,5 +1,4 @@
-﻿using System;
-using JAC.Shared;
+﻿using JAC.Shared;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -15,11 +14,11 @@ namespace JAC.Service.Core
         public string GetResponse(string command)
         {
             string[] splitter = command.Split(' ');
-            string channel = splitter[1];
+            IChannel channel = new Channel(splitter[1]);
             
             ChatDirectory chatDirectory = ChatDirectory.GetInstance();
 
-            if (string.IsNullOrEmpty(chatDirectory.FindChannel(channel)))
+            if (chatDirectory.FindChannel(channel) == null)
             {
                 chatDirectory.AddChannel(channel);
             }

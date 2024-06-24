@@ -1,4 +1,5 @@
-﻿using JAC.Shared;
+﻿using System;
+using JAC.Shared;
 using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
@@ -9,7 +10,7 @@ namespace JAC.Service.Core
         /// <summary>
         /// Instance variable for Channel
         /// </summary>
-        string _channel = "";
+        IChannel _groupChannel;
         
         /// <summary>
         /// Instance variable for Message
@@ -43,21 +44,17 @@ namespace JAC.Service.Core
         {
             string[] splitter = command.Split(' ');
 
-            if (splitter.Length == 3)
+            if (splitter.Length >= 3)
             {
-                _channel = splitter[1].Trim();
-            }
-            else if (splitter.Length == 2)
-            {
-                _channel = "anonymous";
+                _groupChannel = new Channel(splitter[1].Trim());
             }
             
             ChatDirectory chatDirectory = ChatDirectory.GetInstance();
 
-            if (chatDirectory.FindChannel(_channel) != null)
+            if (chatDirectory.FindChannel(_groupChannel) != null)
             {
-                var splitAtPipe = command.Split('|');
-                _message = splitAtPipe[1].Trim();
+                string[] splitAtPipe = command.Split('|');
+                _message = command.Substring(splitAtPipe[0].Length).Trim();
             
                 Publish(_session.ChatUser);
                 
@@ -75,7 +72,7 @@ namespace JAC.Service.Core
         /// <param name="sender">Sender of the message</param>
         private void Publish(IUser sender)
         {
-            IChatMessage chatMessage = new ChatMessage(_channel, sender.Nickname, _message, false);
+            IChatMessage chatMessage = new ChatMessage(_groupChannel.Name, sender.Nickname, _message, false);
             ChatMessageStorage chatMessageStorage = ChatMessageStorage.GetInstance();
             chatMessageStorage.AddMessage(chatMessage);
         }

@@ -18,9 +18,9 @@ namespace JAC.Service.Core
             string result = "";
             
             ChatDirectory instance = ChatDirectory.GetInstance();
-            List<string> channels = (List<string>)instance.GetChannelNames();
+            List<IChannel> channels = (List<IChannel>)instance.GetChannelNames();
 
-            foreach (string channel in channels)
+            foreach (IChannel channel in channels)
             {
                 if (channel != channels[channels.Count - 1])
                 {

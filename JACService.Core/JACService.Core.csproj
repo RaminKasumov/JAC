@@ -121,6 +121,7 @@
         <Compile Include="FileServiceLogger.cs" />
         <Compile Include="JoinChannelRequestHandler.cs" />
         <Compile Include="LoginRequestHandler.cs" />
+        <Compile Include="LogMessage.cs" />
         <Compile Include="MessageDispatcher.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="RequestHandlerFactory.cs" />

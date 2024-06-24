@@ -84,15 +84,10 @@ namespace JAC.Service.Core
                 while (true)
                 {
                     string receivedText = _reader.ReceiveText();
-                    _serviceLogger.LogRequestInfo($"[{DateTime.Now.ToShortTimeString()}] Received request from {ClientSocket.RemoteEndPoint}: \"{receivedText}\".");
+                    _serviceLogger.LogRequestInfo($"[{DateTime.Now}] REQUEST Received request from {ClientSocket.RemoteEndPoint}: \"{receivedText}\".");
 
                     ITextRequest request = RequestHandlerFactory.CreateTextRequest(receivedText, this);
                     string response = request.GetResponse(receivedText);
-
-                    if (response == "ok")
-                    {
-                        return;
-                    }
                     
                     if (!SendText(response))
                     {
@@ -102,10 +97,10 @@ namespace JAC.Service.Core
                     if (response.StartsWith("Channel"))
                     {
                         string[] splitter = response.Split(' ');
-                        ChatUser.CurrentChannel = splitter[1];
+                        ChatUser.CurrentChannel = new Channel(splitter[1]);
                     }
                     
-                    _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Sending response to {ClientSocket.RemoteEndPoint}: \"{response}\".");
+                    _serviceLogger.LogRequestInfo($"[{DateTime.Now}] RESPONSE Sending response to {ClientSocket.RemoteEndPoint}: \"{response}\".");
                     
                     if (receivedText == "exit")
                     {
@@ -128,7 +123,7 @@ namespace JAC.Service.Core
         {
             if (ClientSocket.Connected)
             {
-                _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Client {ClientSocket.RemoteEndPoint} has been disconnected.");
+                _serviceLogger.LogServiceInfo($"[{DateTime.Now}] NOTIFICATION Client {ClientSocket.RemoteEndPoint} has been disconnected.");
                 
                 ClientSocket.Shutdown(SocketShutdown.Both);
                 ClientSocket.Close();
@@ -167,11 +162,6 @@ namespace JAC.Service.Core
                 ITextRequest request = RequestHandlerFactory.CreateTextRequest(receivedText, this);
                 string response = request.GetResponse(receivedText);
                 
-                if (response == "ok")
-                {
-                    return;
-                }
-                
                 SendText(response);
             }
         }
@@ -188,7 +178,7 @@ namespace JAC.Service.Core
         /// Handles the UserLoggedIn event
         /// </summary>
         /// <param name="user">User</param>
-        private void OnUserLoggedIn(ChatUser user)
+        private void OnUserLoggedIn(IUser user)
         {
             ChatUser = user;
         }

@@ -9,7 +9,7 @@ namespace JAC.Shared
         /// <summary>
         /// Auto-property for Messages
         /// </summary>
-        List<IChatMessage> Messages { get; set; } = new List<IChatMessage>();
+        List<IChatMessage> Messages { get; } = new List<IChatMessage>();
         
         /// <summary>
         /// Auto-property for the instance of ChatMessageStorage

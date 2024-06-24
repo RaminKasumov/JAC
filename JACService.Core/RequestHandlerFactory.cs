@@ -1,5 +1,4 @@
-﻿using System;
-using JACService.Core.Contracts;
+﻿using JACService.Core.Contracts;
 
 namespace JAC.Service.Core
 {
@@ -10,6 +9,7 @@ namespace JAC.Service.Core
         /// Creates a text request handler based on the given request
         /// </summary>
         /// <param name="request">Input request</param>
+        /// <param name="session">SessionHandler</param>
         /// <returns>ITextRequest instance</returns>
         public static ITextRequest CreateTextRequest(string request, SessionHandler session)
         {

@@ -6,12 +6,7 @@ namespace JAC.Shared
 {
     public class MessageReceiver
     {
-        #region instancevariables
-        /// <summary>
-        /// Instance variable for Socket
-        /// </summary>
-        readonly Socket _socket;
-
+        #region instancevariable
         /// <summary>
         /// Instance variable for SocketReader
         /// </summary>
@@ -46,8 +41,7 @@ namespace JAC.Shared
         /// <param name="socket">Socket</param>
         public MessageReceiver(Socket socket)
         {
-            _socket = socket;
-            _reader = new SocketReader(_socket, BufferSize);
+            _reader = new SocketReader(socket, BufferSize);
         }
         #endregion
 
@@ -59,8 +53,7 @@ namespace JAC.Shared
         {
             IsReceiving = true;
             
-            ThreadStart threadStart = new ThreadStart(ReceiveMessages);
-            Thread thread = new Thread(threadStart)
+            Thread thread = new Thread(ReceiveMessages)
             {
                 IsBackground = true
             };
@@ -97,7 +90,7 @@ namespace JAC.Shared
         /// Raises the MessageReceived event by invoking it, notifying subscribers about the received message
         /// </summary>
         /// <param name="message">Message</param>
-        protected virtual void OnMessageReceived(string message)
+        private void OnMessageReceived(string message)
         {
             MessageReceived?.Invoke(this, new MessageReceivedEventArgs(message));
         }

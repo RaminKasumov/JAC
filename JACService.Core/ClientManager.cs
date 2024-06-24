@@ -70,7 +70,7 @@ namespace JAC.Service.Core
                     
                     _sessions.Add(session);
                     
-                    _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] A new client connected from: {session.ClientSocket.RemoteEndPoint}");
+                    _serviceLogger.LogServiceInfo($"[{DateTime.Now}] NOTIFICATION A new client connected from: {session.ClientSocket.RemoteEndPoint}");
                 
                     Thread thread = new Thread(session.HandleCommunication)
                     {
@@ -100,7 +100,7 @@ namespace JAC.Service.Core
             SessionHandler session = (SessionHandler)sender;
             _sessions.Remove(session);
             
-            _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Amount of the clients: {_sessions.Count}");
+            _serviceLogger.LogServiceInfo($"[{DateTime.Now}] NOTIFICATION Amount of the clients: {_sessions.Count}");
         }
         
         /// <summary>

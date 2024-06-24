@@ -10,11 +10,6 @@ namespace JAC.Service.Core
     {
         #region instancevariables
         /// <summary>
-        /// Instance variable for Port of Server
-        /// </summary>
-        readonly int _port;
-        
-        /// <summary>
         /// Instance variable for Socket of Server
         /// </summary>
         Socket _serverSocket;
@@ -31,7 +26,7 @@ namespace JAC.Service.Core
         /// </summary>
         public IPEndPoint EndPoint
         {
-            get; private set;
+            get; set;
         }
         
         /// <summary>
@@ -39,7 +34,7 @@ namespace JAC.Service.Core
         /// </summary>
         public ClientManager ClientManager
         {
-            get; private set;
+            get; set;
         }
 
         /// <summary>
@@ -49,17 +44,37 @@ namespace JAC.Service.Core
         {
             get; private set;
         }
+
+        /// <summary>
+        /// Auto-property for IP-Address
+        /// </summary>
+        public static string Ip { get; set; } = DefaultIp;
+
+        /// <summary>
+        /// Auto-property for Port
+        /// </summary>
+        public static int Port { get; set; } = DefaultPort;
+        #endregion
+        
+        #region constants
+        /// <summary>
+        /// Constant for default IP-Address
+        /// </summary>
+        public const string DefaultIp = "127.0.0.1";
+        
+        /// <summary>
+        /// Constant for default Port
+        /// </summary>
+        public const int DefaultPort = 4711;
         #endregion
 
         #region constructor
         /// <summary>
         /// Instance variables are being initialized
         /// </summary>
-        /// <param name="port">Port of Server</param>
         /// <param name="serviceLogger">ServiceLogger</param>
-        public TcpService(int port, IServiceLogger serviceLogger)
+        public TcpService(IServiceLogger serviceLogger)
         {
-            _port = port;
             _serviceLogger = serviceLogger;
         }
         #endregion
@@ -68,29 +83,39 @@ namespace JAC.Service.Core
         /// <summary>
         /// Server is being started
         /// </summary>
-        /// <param name="backLog">Maximum queue length for pending connections</param>
-        public void Start(int backLog)
+        /// <param name="ip">IP-Address</param>
+        /// <param name="port">Port</param>
+        public void Start(string ip, int port)
         {
-            EndPoint = new IPEndPoint(IPAddress.Loopback, _port);
-            
             try
             {
+                if (!IPAddress.TryParse(ip, out IPAddress ipAddress))
+                {
+                    ipAddress = IPAddress.Parse(DefaultIp);
+                }
+                
+                EndPoint = new IPEndPoint(ipAddress, port);
+                
                 _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 ClientManager = new ClientManager(_serverSocket, _serviceLogger);
+                
                 _serverSocket.Bind(EndPoint);
-                _serverSocket.Listen(backLog);
+                _serverSocket.Listen(20);
+                
+                _serviceLogger.LogServiceInfo($"[{DateTime.Now}] Server started on {_serverSocket.LocalEndPoint}.");
+                
                 Online = true;
-                _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Server started on {EndPoint.Address}:{EndPoint.Port}.");
 
                 Thread thread = new Thread(ClientManager.AcceptClients)
                 {
                     IsBackground = true
                 };
+
                 thread.Start();
             }
             catch (Exception)
             {
-                _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Server failed to start on {EndPoint.Address}:{EndPoint.Port}.");
+                _serviceLogger.LogServiceInfo($"[{DateTime.Now}] NOTIFICATION Server failed to start on {EndPoint.Address}:{EndPoint.Port}.");
             }
         }
 
@@ -101,7 +126,7 @@ namespace JAC.Service.Core
         {
             _serverSocket.Close();
             Online = false;
-            _serviceLogger.LogServiceInfo($"[{DateTime.Now.ToShortTimeString()}] Server stopped.");
+            _serviceLogger.LogServiceInfo($"[{DateTime.Now}] NOTIFICATION Server stopped.");
         }
         #endregion
     }

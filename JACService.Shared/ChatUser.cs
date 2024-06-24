@@ -1,5 +1,4 @@
-﻿using JACService.Core.Contracts;
-
+﻿
 namespace JAC.Shared
 {
     public class ChatUser : IUser
@@ -8,12 +7,17 @@ namespace JAC.Shared
         /// <summary>
         /// Auto-property for Nickname of User
         /// </summary>
-        public string Nickname { get; set; }
+        public string Nickname { get; }
+        
+        /// <summary>
+        /// Auto-property for Password of User
+        /// </summary>
+        public string Password { get; }
         
         /// <summary>
         /// Auto-property for CurrentChannel of User
         /// </summary>
-        public string CurrentChannel { get; set; }
+        public IChannel CurrentChannel { get; set; }
         
         /// <summary>
         /// Auto-property to find out if the User is logged in or not
@@ -22,14 +26,17 @@ namespace JAC.Shared
         #endregion
         
         #region constructors
+
         /// <summary>
         /// Constructor if a Nickname is given
         /// </summary>
         /// <param name="nickname">Nickname of User</param>
-        public ChatUser(string nickname)
+        /// <param name="password">Password of User</param>
+        public ChatUser(string nickname, string password)
         {
             Nickname = nickname;
-            CurrentChannel = "anonymous";
+            Password = password;
+            CurrentChannel = new Channel();
         }
         
         /// <summary>
@@ -66,7 +73,7 @@ namespace JAC.Shared
         public static ChatUser FromString(string user)
         {
             string[] parts = user.Split('|');
-            return new ChatUser(parts[0]) { CurrentChannel = parts[1] };
+            return new ChatUser(parts[0], parts[1]) { CurrentChannel = new Channel(parts[2]) };
         }
         
         /// <summary>
@@ -75,7 +82,7 @@ namespace JAC.Shared
         /// <returns>A string that represents the current ChatUser object</returns>
         public override string ToString()
         {
-            return $"{Nickname}|{CurrentChannel}";
+            return $"{Nickname}|{Password}|{CurrentChannel.Name}";
         }
         #endregion
     }

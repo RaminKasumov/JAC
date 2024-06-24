@@ -22,20 +22,22 @@ namespace JAC.Service.Core
         public string GetResponse(string command)
         {
             string[] splitter = command.Split(' ');
-            string nickname = command.Substring(splitter[0].Length).Trim();
+            string nickname = command.Substring(splitter[0].Length, command.LastIndexOf(' ') - splitter[0].Length).Trim();
+            string password = command.Substring(command.LastIndexOf(' ') + 1).Trim();
             ChatDirectory directory = ChatDirectory.GetInstance();
-            
+
             if (directory.FindUser(nickname) != null)
             {
-                return "Error: User already exists!";
+                return "Error: User already exists!!!";
             }
             else
             {
-                ChatUser user = new ChatUser(nickname);
+                ChatUser user = new ChatUser(nickname, password);
                 user.Login();
                 directory.AddUser(user);
+                directory.AddChannel(user.CurrentChannel);
                 OnUserLoggedIn(user);
-                return "Login-success: " + user;
+                return $"Login-success: {user}";
             }
         }
 
@@ -43,7 +45,7 @@ namespace JAC.Service.Core
         /// Raises the UserLoggedIn event by invoking it, notifying subscribers about the user login
         /// </summary>
         /// <param name="user">User</param>
-        protected virtual void OnUserLoggedIn(ChatUser user)
+        private void OnUserLoggedIn(ChatUser user)
         {
             UserLoggedIn?.Invoke(user);
         }

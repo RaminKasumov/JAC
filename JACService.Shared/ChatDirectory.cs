@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using JACService.Core.Contracts;
 
 namespace JAC.Shared
 {
@@ -14,7 +13,7 @@ namespace JAC.Shared
         /// <summary>
         /// List of Channels
         /// </summary>
-        readonly List<string> _channels = new List<string>();
+        readonly List<IChannel> _channels = new List<IChannel>();
         #endregion
         
         #region property
@@ -30,7 +29,7 @@ namespace JAC.Shared
         /// </summary>
         private ChatDirectory()
         {
-            AddChannel("anonymous");
+            AddChannel(new Channel());
         }
         #endregion
         
@@ -43,22 +42,17 @@ namespace JAC.Shared
         {
             return Instance;
         }
-        
+
         /// <summary>
         /// Adds a User to the list of Users
         /// </summary>
         /// <param name="user">User</param>
         /// <returns>Returns whether a new user was added</returns>
-        public bool AddUser(IUser user)
+        public void AddUser(IUser user)
         {
             if (!_users.Contains(user))
             {
                 _users.Add(user);
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
         
@@ -87,22 +81,17 @@ namespace JAC.Shared
             }
             return null;
         }
-        
+
         /// <summary>
         /// Adds a Channel to the list of Channels
         /// </summary>
         /// <param name="channel">Channel</param>
         /// <returns>Returns whether a new channel was added</returns>
-        public bool AddChannel(string channel)
+        public void AddChannel(IChannel channel)
         {
             if (!_channels.Contains(channel))
             {
                 _channels.Add(channel);
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
         
@@ -110,7 +99,7 @@ namespace JAC.Shared
         /// Removes a Channel from the list of Channels
         /// </summary>
         /// <param name="channelName">Name of channel</param>
-        public void RemoveChannel(string channelName)
+        public void RemoveChannel(IChannel channelName)
         {
             _channels.Remove(channelName);
         }
@@ -120,11 +109,11 @@ namespace JAC.Shared
         /// </summary>
         /// <param name="channelName">Name of channel</param>
         /// <returns>Returns the Channel with the given Name</returns>
-        public string FindChannel(string channelName)
+        public IChannel FindChannel(IChannel channelName)
         {
-            foreach (string channel in _channels)
+            foreach (IChannel channel in _channels)
             {
-                if (channel == channelName)
+                if (channel.Name == channelName.Name)
                 {
                     return channel;
                 }
@@ -137,11 +126,11 @@ namespace JAC.Shared
         /// </summary>
         /// <param name="channel">Channel</param>
         /// <returns>Returns all Users in the Channel</returns>
-        public IEnumerable<string> GetUsersByChannel(string channel)
+        public IEnumerable<string> GetUsersByChannel(IChannel channel)
         {
-            if (string.IsNullOrEmpty(channel))
+            if (channel == null)
             {
-                channel = "anonymous";
+                channel = new Channel("Anonymous");
             }
 
             List<string> users = new List<string>();
@@ -159,7 +148,7 @@ namespace JAC.Shared
         /// All existing Channels are being returned
         /// </summary>
         /// <returns>Returns all Channels</returns>
-        public IEnumerable<string> GetChannelNames()
+        public IEnumerable<IChannel> GetChannelNames()
         {
             return _channels;
         }

@@ -11,7 +11,9 @@ namespace JAC.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    #region property
+    #region properties
     public ObservableCollection<ChatMessage>? Messages { get; set; }
+    
+    public ObservableCollection<Channel>? Channels { get; set; }
     #endregion
 }

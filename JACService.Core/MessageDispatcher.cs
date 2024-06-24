@@ -45,9 +45,9 @@ namespace JAC.Service.Core
         {
             _chatMessageReceived = new ChatMessageReceivedEventArgs(chatMessage);
             
-            _sessions.FindAll(session => session.ChatUser.CurrentChannel == chatMessage.Recipient).ForEach(session => session.SendText("MessageReceived: " + _chatMessageReceived.Message));
+            _sessions.FindAll(session => session.ChatUser.CurrentChannel.Name == chatMessage.Recipient).ForEach(session => session.SendText($"MessageReceived: {_chatMessageReceived.Message}"));
             
-            _serviceLogger.LogBroadcastMessage($"[{DateTime.Now.ToShortTimeString()}] Broadcast message was received.");
+            _serviceLogger.LogBroadcastMessage($"[{DateTime.Now}] BROADCAST Broadcast message was received.");
         }
         
         /// <summary>
@@ -57,9 +57,9 @@ namespace JAC.Service.Core
         {
             _chatMessageReceived = new ChatMessageReceivedEventArgs(chatMessage);
             
-            _sessions.FindAll(session => session.ChatUser.Nickname == chatMessage.Recipient).ForEach(session => session.SendText("MessageReceived: " + _chatMessageReceived.Message));
+            _sessions.FindAll(session => session.ChatUser.Nickname == chatMessage.Recipient).ForEach(session => session.SendText($"MessageReceived: {_chatMessageReceived.Message}"));
             
-            _serviceLogger.LogWhisperMessage($"[{DateTime.Now.ToShortTimeString()}] Whisper message was received.");
+            _serviceLogger.LogWhisperMessage($"[{DateTime.Now}] WHISPER Whisper message was received.");
         }
         #endregion
     }
