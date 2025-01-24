@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="https://github.com/projektanker/icons.avalonia"
+             xmlns:vm="clr-namespace:JACService.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="800"
+             x:Class="JACService.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Grid>
+        <Grid x:Name="Server">
+            <Grid.Background>
+                <SolidColorBrush Color="#11111B"/>
+            </Grid.Background>
+        
+            <Label x:Name="LblServer" Content="Server" FontSize="70" FontFamily="Georgia" Foreground="White" Background= "#050511" Height="180" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0,0,0,310"/>
+            <Label x:Name="LblStatus" Content="Offline" FontSize="50" FontFamily="Georgia" Foreground="#D83F5D" Background="Transparent" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5,100,5,0"/>
+            <Button avalonia:Attached.Icon="mdi-cog-outline" x:Name="BtnSettings" FontSize="50" FontFamily="Georgia" Height="70" Width="70" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderThickness="0" Click="BtnSettings_OnClick" Margin="0,25,25,0"/>
+            <Label x:Name="LblDate" CornerRadius="50" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="180" Foreground="Black" Background="White" Margin="0,195,0,0"/>
+            <ListBox x:Name="LbxInformation" FontSize="40" FontFamily="Georgia" Foreground="White" Background="#1F2029" BorderThickness="0" Margin="130,270,130,230"/>
+            <Button avalonia:Attached.Icon="mdi-trash-can-outline" x:Name="BtnClear" FontSize="50" FontFamily="Georgia" Height="60" Width="60" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderThickness="0" Click="BtnClear_OnClick" Margin="0,200,130,0"/>
+            <Button x:Name="BtnStart" CornerRadius="50" FontSize="55" FontFamily="Georgia" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="120" Width="300" Foreground="Black" Background="#149D4D" Click="BtnStart_OnClick" Margin="180,0,600,30">
+                <TextBlock Text="Start" TextAlignment="Center"/>
+            </Button>
+            <Button x:Name="BtnStop" CornerRadius="50" FontSize="55" FontFamily="Georgia" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="120" Width="300" Foreground="Black" Background="#D83F5D" Click="BtnStop_OnClick" Margin="600,0,180,30">
+                <TextBlock Text="Stop" TextAlignment="Center"/>
+            </Button>
+            <Label x:Name="LblServerOnline" Content="Server is already online!!!" FontSize="40" FontFamily="Georgia" Foreground="#D83F5D" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsVisible="False" IsHitTestVisible="False" Margin="0,0,0,165"/>
+            <Label x:Name="LblServerOffline" Content="Server is not online!!!" FontSize="40" FontFamily="Georgia" Foreground="#D83F5D" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsVisible="False" IsHitTestVisible="False" Margin="0,0,0,165"/>
+        </Grid>
+    </Grid>
+</UserControl>

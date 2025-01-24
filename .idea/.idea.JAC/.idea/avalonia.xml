@@ -5,13 +5,20 @@
       <map>
         <entry key="JAC/JAC/App.axaml" value="JAC/JAC.Browser/JAC.Browser.csproj" />
         <entry key="JAC/JAC/JACClient.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
+        <entry key="JAC/JAC/Views/AccountOptions.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
         <entry key="JAC/JAC/Views/JACClient.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
         <entry key="JAC/JAC/Views/MainView.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
         <entry key="JAC/JAC/Views/MainWindow.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
+        <entry key="JAC/JAC/Views/NewChannel.axaml" value="JAC/JAC.Desktop/JAC.Desktop.csproj" />
         <entry key="JACLogin/JACLogin/App.axaml" value="JACLogin/JACLogin.Browser/JACLogin.Browser.csproj" />
         <entry key="JACLogin/JACLogin/Views/MainView.axaml" value="JACLogin/JACLogin.Desktop/JACLogin.Desktop.csproj" />
         <entry key="JACService/App.axaml" value="JACService/JACService.csproj" />
         <entry key="JACService/MainWindow.axaml" value="JACService/JACService.csproj" />
+        <entry key="JACService/ServerOptions.axaml" value="JACService/JACService.csproj" />
+        <entry key="JACService/Views/MainView.axaml" value="JACService/JACService.csproj" />
+        <entry key="JACService/Views/MainWindow.axaml" value="JACService/JACService.csproj" />
+        <entry key="JACService/Views/MainWindow1.axaml" value="JACService/JACService.csproj" />
+        <entry key="JACService/Views/ServerOptions.axaml" value="JACService/JACService.csproj" />
       </map>
     </option>
   </component>

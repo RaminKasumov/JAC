@@ -1,0 +1,28 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fa="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:avalonia="https://github.com/projektanker/icons.avalonia"
+             mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="700"
+             x:Class="JAC.Views.AccountOptions">
+    <fa:ContentDialog x:Name="CdlAccountOptions" CornerRadius="50" Title="Account" FontFamily="Georgia" CloseButtonText="Close">
+          <fa:ContentDialog.TitleTemplate>
+             <DataTemplate>
+                <TextBlock Text="Account" FontSize="40" FontFamily="Georgia" FontWeight="Normal"/>
+             </DataTemplate>
+          </fa:ContentDialog.TitleTemplate>
+          
+          <Grid x:Name="Account" Height="350" Width="400">
+             <Label x:Name="LblName" Content="Name:" FontSize="30" FontFamily="Georgia" Height="70" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="10,50,10,10"/>
+             <TextBox x:Name="TbxName" CornerRadius="20" FontSize="25" FontFamily="Georgia" Height="60" VerticalContentAlignment="Center" BorderThickness="0" IsReadOnly="True" Focusable="False" TextChanged="TbxName_OnTextChanged" CaretBrush="White" Padding="15,0,15,0" Margin="130,0,0,200"/>
+             <TextBlock x:Name="TblPlaceHolderName" Text="Name of User" FontSize="25" FontFamily="Georgia" Height="40" Width="190" IsVisible="True" IsHitTestVisible="False" Margin="90,0,0,190"/>
+             <Label x:Name="LblPasscode" Content="Password:" FontSize="30" FontFamily="Georgia" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="10,160,10,10"/>
+             <TextBox x:Name="TbxPasscode" CornerRadius="20" FontSize="25" FontFamily="Georgia" Height="60" VerticalContentAlignment="Center" BorderThickness="0" IsReadOnly="True" Focusable="False" TextChanged="TbxPasscode_OnTextChanged" CaretBrush="White" Padding="15,0,65,0" Margin="170,20,0,0"/>
+             <TextBlock x:Name="TblPlaceHolderPasscode" Text="Password" FontSize="25" FontFamily="Georgia" Height="40" Width="170" IsVisible="True" IsHitTestVisible="False" Margin="150,31,0,0"/>
+             <Button avalonia:Attached.Icon="mdi-eye" x:Name="BtnShowPasscode" CornerRadius="20" FontSize="35" FontFamily="Georgia" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Background="Transparent" BorderThickness="0" Click="BtnShowPasscode_OnClick" Margin="340,22,0,0"/>
+             <Button avalonia:Attached.Icon="mdi-eye-off" x:Name="BtnHidePasscode" CornerRadius="20" FontSize="35" FontFamily="Georgia" Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Background="Transparent" BorderThickness="0" IsVisible="False" Click="BtnHidePasscode_OnClick" Margin="340,22,0,0"/>
+             <Button x:Name="BtnLogout" Content="Logout" CornerRadius="20" FontSize="25" FontFamily="Georgia" Height="60" Width="130" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="0" Click="BtnLogout_OnClick" Margin="10,10,10,0"/>
+          </Grid>
+       </fa:ContentDialog>
+</UserControl>
