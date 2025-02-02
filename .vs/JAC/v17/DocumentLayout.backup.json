@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\4AHITN\\JAC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB779492-CED2-4236-87CC-212A7EAA1529}|JAC\\JAC\\JAC.csproj|c:\\users\\user\\source\\repos\\4ahitn\\jac\\jac\\jac\\views\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB779492-CED2-4236-87CC-212A7EAA1529}|JAC\\JAC\\JAC.csproj|solutionrelative:jac\\jac\\views\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB779492-CED2-4236-87CC-212A7EAA1529}|JAC\\JAC\\JAC.csproj|c:\\users\\user\\source\\repos\\4ahitn\\jac\\jac\\jac\\views\\mainview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{DB779492-CED2-4236-87CC-212A7EAA1529}|JAC\\JAC\\JAC.csproj|solutionrelative:jac\\jac\\views\\mainview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CD0B1AB-B69F-4B66-9220-5779D827C6E4}|JACService\\JACService.csproj|c:\\users\\user\\source\\repos\\4ahitn\\jac\\jacservice\\views\\mainview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
@@ -151,14 +151,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.axaml.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\4AHITN\\JAC\\JAC\\JAC\\Views\\MainWindow.axaml.cs",
-              "RelativeDocumentMoniker": "JAC\\JAC\\Views\\MainWindow.axaml.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\4AHITN\\JAC\\JAC\\JAC\\Views\\MainWindow.axaml.cs",
-              "RelativeToolTip": "JAC\\JAC\\Views\\MainWindow.axaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T23:02:42.697Z",
+              "Title": "MainView.axaml",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\4AHITN\\JAC\\JAC\\JAC\\Views\\MainView.axaml",
+              "RelativeDocumentMoniker": "JAC\\JAC\\Views\\MainView.axaml",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\4AHITN\\JAC\\JAC\\JAC\\Views\\MainView.axaml",
+              "RelativeToolTip": "JAC\\JAC\\Views\\MainView.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-24T23:03:35.901Z",
               "EditorCaption": ""
             },
             {
