@@ -12,12 +12,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.3.0" />
-        <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.3.0" />
-        <PackageReference Include="Projektanker.Icons.Avalonia.MaterialDesign" Version="9.3.0" />
+        <PackageReference Include="Avalonia.Browser" Version="11.3.2" />
+        <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.6.2" />
+        <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.6.2" />
+        <PackageReference Include="Projektanker.Icons.Avalonia.MaterialDesign" Version="9.6.2" />
         <PackageReference Include="System.Private.Uri" Version="4.3.2" />
-        <PackageReference Include="System.Text.Json" Version="8.0.5" />
+        <PackageReference Include="System.Text.Json" Version="9.0.6" />
     </ItemGroup>
 
     <ItemGroup>
